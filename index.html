@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>POST Displine Training</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">   
+  <link rel="stylesheet" href="css/style.css">    
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+  
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="images/favicon.png">
+
+</head>
+<body>
+
+  <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div class="container">
+    <div class="row">
+      <div class="six columns offset-by-three" style="margin-top: 5%">
+        <h4>What Happened to them?</h4>
+        <p>See what happened to all the convictions</p>
+      </div>
+    </div>
+    <div class="row">
+        <div class="ten columns offset-by-one">
+            <button class="button-primary" onclick="colorChange2()">1st</button>
+            <button class="button-primary" onclick="thirdThing()">2nd</button>
+            <button class="button-primary" onclick="fourthThing()">3rd</button>
+            <button class="button-primary" onclick="fifthThing()">4th</button>
+            <button class="button-primary" onclick="sixthThing()">5th</button>
+            <button class="button-primary" onclick="seventhThing()">6th</button>
+            <button class="button-primary" onclick="eightThing()">7th</button>
+        </div>
+    </div>
+    <div class="row" id="step1">
+        <div class="three columns" id="mainColumn">
+            <div class="box main" id="main">
+            </div>            
+        </div>
+        <div class="six columns" id="chatter">
+            <div id="text">
+<!--                <p class="para" id="step1">Since 1995, there have been more than <br><strong><span class="count" id="totalCnt">0</span> Cases</strong> brought against Minnesota Police Officers.</p>-->
+            </div>
+        </div>
+        <div class="three columns noSee">
+            <div id="step2">
+                <label>Felony <span class="count" id="felCnt">0</span></label>
+                <div class="box fel" id="fel1">
+                </div> 
+                <label>Gross Misdemeanor <span class="count" id="groCnt">0</span></label>
+                <div class="box gro" id="gro1">
+                </div>  
+                <label>Misdemeanor <span class="count" id="misCnt">0</span></label>
+                <div class="box mis" id="mis1">
+                </div>  
+            </div>
+        </div>     
+        <div class="three columns noSee" id="step3">
+            <div>
+                <label>Felony <span class="count" id="fel2Cnt">0</span></label>
+                <div class="box fel" id="fel2">
+                </div>       
+                <label>Gross Misdemeanor <span class="count" id="gro2Cnt">0</span></label>
+                <div class="box gro" id="gro2">
+                </div> 
+                <label>Misdemeanor <span class="count" id="mis2Cnt">0</span></label>
+                <div class="box mis" id="mis2">
+                </div>        
+            </div>
+        </div>
+        <div class="three columns noSee" id="step4">
+            <label>Revocation/Surrender <span class="count" id="revCnt">0</span></label>
+            <div class="box" id="revSur">
+            </div>
+            <label>Suspension/Probation <span class="count" id="susCnt">0</span></label>
+            <div class="box" id="susPro">
+            </div>
+            <label>No discipline <span class="count" id="disCnt">0</span></label>
+            <div class="box" id="noDis">
+            </div>      
+            <label>No discipline/License expired before sentencing <span class="count" id="expCnt">0</span></label>
+            <div class="box" id="expired">
+            </div>  
+        </div>        
+        <div class="twelve columns">
+            <i class="material-icons">keyboard_arrow_left</i>
+            <div id="showCount">1/5</div>
+            <i class="material-icons">keyboard_arrow_right</i>
+        </div>
+    </div>
+  </div>
+
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.10.0/d3.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="js/script.js"></script>
+</html>
