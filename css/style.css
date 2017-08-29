@@ -4,6 +4,10 @@
     margin-top: -10px;
 }
 
+#graph  {
+    display: none;
+}
+
 .slider-wrapper    {
     margin: 0 auto;
     width: 320px;
@@ -72,6 +76,7 @@ div > p {
     height: 275px;
 }
 
+/*
 .box#revSur {
     height: 80px;
 }
@@ -87,6 +92,7 @@ div > p {
 .box#expired {
     height: 25px;
 }
+*/
 
 .noSee  {
     display: none;

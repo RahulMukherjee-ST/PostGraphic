@@ -41,6 +41,7 @@
         <p>See what happened to all the convictions</p>
       </div>
     </div>
+<!--
     <div class="row">
         <div class="ten columns offset-by-one">
             <button class="button-primary" onclick="colorChange2()">1st</button>
@@ -52,17 +53,10 @@
             <button class="button-primary" onclick="eightThing()">7th</button>
         </div>
     </div>
+-->
     <div class="row" id="step1">
-        <div class="three columns" id="mainColumn">
-            <div class="box main" id="main">
-            </div>            
-        </div>
-        <div class="six columns" id="chatter">
-            <div id="text">
-<!--                <p class="para" id="step1">Since 1995, there have been more than <br><strong><span class="count" id="totalCnt">0</span> Cases</strong> brought against Minnesota Police Officers.</p>-->
-            </div>
-        </div>
-        <div class="three columns noSee">
+        <div class="four columns">
+            <h5>Pre-Trial Charges</h5>
             <div id="step2">
                 <label>Felony <span class="count" id="felCnt">0</span></label>
                 <div class="box fel" id="fel1">
@@ -75,7 +69,8 @@
                 </div>  
             </div>
         </div>     
-        <div class="three columns noSee" id="step3">
+        <div class="four columns" id="step3">
+            <h5>Trial Convictions</h5>
             <div>
                 <label>Felony <span class="count" id="fel2Cnt">0</span></label>
                 <div class="box fel" id="fel2">
@@ -88,19 +83,22 @@
                 </div>        
             </div>
         </div>
-        <div class="three columns noSee" id="step4">
-            <label>Revocation/Surrender <span class="count" id="revCnt">0</span></label>
-            <div class="box" id="revSur">
+        <div class="four columns" id="step4">
+            <h5>Post Board Displine</h5>
+            <div>
+                <label>Revocation/Surrender <span class="count" id="revCnt">0</span></label>
+                <div class="box" id="revSur">
+                </div>
+                <label>Suspension/Probation <span class="count" id="susCnt">0</span></label>
+                <div class="box" id="susPro">
+                </div>
+                <label>No discipline <span class="count" id="disCnt">0</span></label>
+                <div class="box" id="noDis">
+                </div>      
+                <label>No discipline/License expired before sentencing <span class="count" id="expCnt">0</span></label>
+                <div class="box" id="expired">
+                </div>  
             </div>
-            <label>Suspension/Probation <span class="count" id="susCnt">0</span></label>
-            <div class="box" id="susPro">
-            </div>
-            <label>No discipline <span class="count" id="disCnt">0</span></label>
-            <div class="box" id="noDis">
-            </div>      
-            <label>No discipline/License expired before sentencing <span class="count" id="expCnt">0</span></label>
-            <div class="box" id="expired">
-            </div>  
         </div>        
         <div class="twelve columns">
             <i class="material-icons">keyboard_arrow_left</i>
