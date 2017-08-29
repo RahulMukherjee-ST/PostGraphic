@@ -36,7 +36,7 @@ div > p {
 
 .box    {
 /*    border: 1px solid #999;*/
-    height: 200px;
+    height: 100px;
     padding: 0px;
     overflow-y: hidden;
     overflow-x: hidden;
@@ -45,7 +45,7 @@ div > p {
 }
 
 .box.main   {
-    height: 410px;
+    height: 100px;
     overflow: visible;
 }
 
@@ -65,15 +65,15 @@ div > p {
 }
 
 .box.fel    {
-    height: 100px;
+    height: 50px;
 }
 
 .box.gro    {
-    height: 125px;
+    height: 75px;
 }
 
 .box.mis    {
-    height: 275px;
+    height: 100px;
 }
 
 /*
