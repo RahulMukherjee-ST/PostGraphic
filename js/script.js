@@ -302,8 +302,8 @@ d3.csv("postdata2.csv", function(d) {
                   row = (s%heightSquares);
         if ($(window).width() < 480 || $(window).height() < 480) {
             return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + 33 )
-        }     
-          
+        }                      
+                        
         return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + 7 )
 
 //          group n squares for column
