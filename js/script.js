@@ -3,20 +3,14 @@
 var width,
     height,
     widthSquares = 30,
-    heightSquares = 18,
-    squareSize = 10,
+    heightSquares = 40,
+    squareSize = 6,
     squareValue = 0,
     gap = 1;
-    var k = 0;
-    var l = 0;
-    var m = 0;
-    var n=0;
-    var o=0;
-    var p=0;
-    var q=0;
+    var mobileX = 33;
+    var deskX = 33;
 
 if ($(window).width() < 480 || $(window).height() < 480) {
-       squareSize = 6;
     widthSquares = 20;
     heightSquares = 40;
     
@@ -40,7 +34,7 @@ d3.csv("postdata2.csv", function(d) {
     chargeCleanup: d.charge_cleanedup
   };
 },
-       function(error, rows) {
+function(error, rows) {
      var data = rows;
       height = (squareSize*widthSquares) + widthSquares*gap + 25;
   width = (squareSize*heightSquares) + heightSquares*gap + 25;
@@ -61,11 +55,11 @@ d3.csv("postdata2.csv", function(d) {
       .attr("x", function(d, i){
                   row = i%heightSquares;
         if ($(window).width() < 480 || $(window).height() < 480) {
-            return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + 33 )
+            return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + mobileX )
         }     
           
 //        row = i%heightSquares;
-        return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + 9 )
+        return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + deskX )
 
           //group n squares for column
 //          col = Math.floor(i/heightSquares);
@@ -89,7 +83,6 @@ d3.csv("postdata2.csv", function(d) {
     var q = 0;
     var r = 0;
     var s = 0;
-    var t = 0;
 
 
     d3.select('#fel1').append("svg").attr("width", 'inherit').attr("height", 'inherit').append("g").attr("id","graph2").selectAll("div");
@@ -117,10 +110,10 @@ d3.csv("postdata2.csv", function(d) {
                     $(this).attr("x",  function(d){
                   row = (k%heightSquares);
         if ($(window).width() < 480 || $(window).height() < 480) {
-            return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + 33 )
+            return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + mobileX )
         }     
           
-        return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + 7 )
+        return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + deskX )
 
 //          group n squares for column
 //          col = Math.floor(k/heightSquares);
@@ -140,10 +133,10 @@ d3.csv("postdata2.csv", function(d) {
                     $(this).attr("x",  function(d){
                   row = (l%heightSquares);
         if ($(window).width() < 480 || $(window).height() < 480) {
-            return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + 33 )
+            return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + mobileX )
         }     
           
-        return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + 7 )
+        return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + deskX )
 
 //          group n squares for column
 //          col = Math.floor(k/heightSquares);
@@ -162,10 +155,10 @@ d3.csv("postdata2.csv", function(d) {
                     $(this).attr("x",  function(d){
                   row = (m%heightSquares);
         if ($(window).width() < 480 || $(window).height() < 480) {
-            return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + 33 )
+            return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + mobileX )
         }     
           
-        return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + 7 )
+        return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + deskX )
 
 //          group n squares for column
 //          col = Math.floor(k/heightSquares);
@@ -186,10 +179,10 @@ d3.csv("postdata2.csv", function(d) {
                     $(this).attr("x",  function(d){
                   row = (n%heightSquares);
         if ($(window).width() < 480 || $(window).height() < 480) {
-            return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + 33 )
+            return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + mobileX )
         }     
           
-        return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + 7 )
+        return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + deskX )
 
 //          group n squares for column
 //          col = Math.floor(k/heightSquares);
@@ -209,10 +202,10 @@ d3.csv("postdata2.csv", function(d) {
                     $(this).attr("x",  function(d){
                   row = (o%heightSquares);
         if ($(window).width() < 480 || $(window).height() < 480) {
-            return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + 33 )
+            return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + mobileX )
         }     
           
-        return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + 7 )
+        return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + deskX )
 
 //          group n squares for column
 //          col = Math.floor(k/heightSquares);
@@ -231,10 +224,10 @@ d3.csv("postdata2.csv", function(d) {
                     $(this).attr("x",  function(d){
                   row = (p%heightSquares);
         if ($(window).width() < 480 || $(window).height() < 480) {
-            return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + 33 )
+            return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + mobileX )
         }     
           
-        return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + 7 )
+        return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + deskX )
 
 //          group n squares for column
 //          col = Math.floor(k/heightSquares);
@@ -255,10 +248,10 @@ d3.csv("postdata2.csv", function(d) {
                     $(this).attr("x",  function(d){
                   row = (q%heightSquares);
         if ($(window).width() < 480 || $(window).height() < 480) {
-            return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + 33 )
+            return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + mobileX )
         }     
           
-        return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + 7 )
+        return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + deskX )
 
 //          group n squares for column
 //          col = Math.floor(k/heightSquares);
@@ -279,10 +272,10 @@ d3.csv("postdata2.csv", function(d) {
                     $(this).attr("x",  function(d){
                   row = (r%heightSquares);
         if ($(window).width() < 480 || $(window).height() < 480) {
-            return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + 33 )
+            return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + mobileX )
         }     
           
-        return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + 7 )
+        return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + deskX )
 
 //          group n squares for column
 //          col = Math.floor(k/heightSquares);
@@ -297,14 +290,14 @@ d3.csv("postdata2.csv", function(d) {
                     $(this).clone().appendTo('#graph2b');
                     r++;
                     break;
-                    case "Suspension/Probation/Other":
+                case "Suspension/Probation/Other":
                     $(this).attr("x",  function(d){
                   row = (s%heightSquares);
         if ($(window).width() < 480 || $(window).height() < 480) {
-            return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + 33 )
+            return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + mobileX )
         }                      
                         
-        return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + 7 )
+        return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + deskX )
 
 //          group n squares for column
 //          col = Math.floor(k/heightSquares);
@@ -320,33 +313,20 @@ d3.csv("postdata2.csv", function(d) {
                     s++;
                     break;
                 default:
-                    $(this).attr("x",  function(d){
-                  row = (t%heightSquares);
-        if ($(window).width() < 480 || $(window).height() < 480) {
-            return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + 33 )
-        }     
-          
-        return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + 7 )
-
-//          group n squares for column
-//          col = Math.floor(k/heightSquares);
-//          return (col*squareSize) + (col*gap);
-        });
-                    $(this).attr("y", function(d){
-          
-        col = Math.floor(t/heightSquares);
-          return (col*squareSize) + (col*gap);
-          
-      });
-                    $(this).clone().appendTo('#graph5b');
-                    $(this).appendTo('#graph');
-                    t++;
+                    break;
     }            
 
         })
-    countUp(data.length,'#totalCnt');
-});            
-
+    countUp(k,'#felCnt');
+    countUp(l,'#groCnt');
+    countUp(m,'#misCnt');
+    countUp(n,'#fel2Cnt');
+    countUp(o,'#gro2Cnt');
+    countUp(p,'#mis2Cnt');
+    countUp(r,'#revCnt');
+    countUp(s,'#susCnt');
+    countUp(q,'#disCnt');
+});
 
 function countUp(counthere,id) {
 $(id).each(function() {

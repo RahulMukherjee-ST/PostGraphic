@@ -75,16 +75,15 @@ div > p {
 }
 
 .box.mis    {
-    height: 100px;
+    height: 105px;
 }
 
-/*
 .box#revSur {
-    height: 80px;
+    height: 50px;
 }
 
 .box#susPro {
-    height: 25px;
+    height: 75px;
 }
 
 .box#noDis {
@@ -94,7 +93,6 @@ div > p {
 .box#expired {
     height: 25px;
 }
-*/
 
 .noSee  {
     display: none;
