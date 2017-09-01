@@ -47,14 +47,16 @@
   </div>
   <div class="container noSee" id="slide2">
     <div class="row">
-      <div class="six columns offset-by-three" style="margin-top: 5%">
-        <h4>What Happened to them?</h4>
-        <p>See what happened to all the convictions</p>
-      </div>
+      <div class="eight columns offset-by-two" style="margin-top: 5%;">
+        <p id="text">felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat</p>
+      </div>        
     </div>
     <div class="row">
         <div class="four columns">
-            <h5>Pre-Trial Charges</h5>
+            <div class="counters">
+                <h6 class="lbl">Intial charges</h6>
+                <h5 class="number" id="1stCnt">629</h5>
+            </div>
             <div id="step2">
                 <label>Felony <span class="count" id="felCnt">0</span></label>
                 <div class="box fel" id="fel1">
@@ -68,7 +70,10 @@
             </div>
         </div>     
         <div class="four columns">
-            <h5>Trial Convictions</h5>
+            <div class="counters">
+                <h6 class="lbl">sentencing level</h6>
+                <h5 class="number" id="2ndCnt">608</h5>
+            </div>
             <div>
                 <label>Felony <span class="count" id="fel2Cnt">0</span></label>
                 <div class="box fel" id="fel2">
@@ -82,7 +87,10 @@
             </div>
         </div>
         <div class="four columns">
-            <h5>Post Board Displine</h5>
+            <div class="counters">
+                <h6 class="lbl">disciplined</h6>
+                <h5 class="number" id="3rdCnt">135</h5>
+            </div>
             <div>
                 <label>Revocation/Surrender <span class="count" id="revCnt">0</span></label>
                 <div class="box" id="revSur">
@@ -99,14 +107,14 @@
   </div>
 <div class="two columns offset-by-five">
             <div class="clicker">
-                <i class="material-icons" onclick="Step4()">keyboard_arrow_left</i>
-                <i class="pt active fa fa-circle"></i>
-                <i class="pt fa fa-circle"></i>
-                <i class="pt fa fa-circle"></i>
-                <i class="pt fa fa-circle"></i>
-                <i class="pt fa fa-circle"></i>
-                <i class="pt fa fa-circle"></i>
-                <i class="material-icons" onclick="Step3()">keyboard_arrow_right</i>
+                <i class="material-icons" id="backBtn">keyboard_arrow_left</i>
+                <i id="cir1" class="pt active fa fa-circle"></i>
+                <i id="cir2" class="pt fa fa-circle"></i>
+                <i id="cir3" class="pt fa fa-circle"></i>
+                <i id="cir4" class="pt fa fa-circle"></i>
+                <i id="cir5" class="pt fa fa-circle"></i>
+                <i id="cir6" class="pt fa fa-circle"></i>
+                <i class="material-icons" id="foreBtn">keyboard_arrow_right</i>
             </div>
         </div>
     

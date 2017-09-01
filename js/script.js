@@ -48,8 +48,8 @@ d3.csv("postdata2.csv", function(d) {
 },
 function(error, rows) {
      var data = rows;
-      height = (squareSize*widthSquares) + heightSquares*gap + 25;
-  width = (squareSize*heightSquares) + widthSquares*gap + 25;
+      height = (squareSize*heightSquares) + widthSquares*gap + 25;
+  width = (squareSize*widthSquares) + heightSquares*gap + 25;
 
     var waffle = d3.select('#intro')
       .append("svg")
@@ -64,16 +64,17 @@ function(error, rows) {
       .attr("width", squareSize)
       .attr("height", squareSize)
       .attr("fill","gray")
-      .attr("x", function(d, i)
-        {
-          //group n squares for column
-          col = Math.floor(i%heightSquares);
-          return (col*squareSize) + (col*gap);
-        })
-      .attr("y", function(d, i)
-      {
+      .attr("x", function(d, i){
         row = i%heightSquares;
-        return (heightSquares*squareSize) - ((row*squareSize) + (row*gap));
+        var numb = ((heightSquares*squareSize) - ((row*squareSize) + (row*gap))) + deskX;
+        return numb;          
+        })
+      .attr("y", function(d, i){
+          //group n squares for column
+          col = Math.floor(i/heightSquares);
+          var xnumb = (col*squareSize) + (col*gap);
+//          console.log (xnumb);
+          return xnumb;
       }).style('display','none')
     
         var mods = document.getElementById('graph').childNodes;
@@ -81,12 +82,13 @@ function(error, rows) {
     
         $(mods).each(function(i){
                 var dis = d3.select(this).datum().disipline_bucket; 
+                console.log(dis);
                 if(dis = "Revocation/Surrender license")
-                    {
-                        $(this).addClass('gro');
-                    }
+                {
+                    $(this).attr('border','1px solid red');
+                }
                 else    {
-                    $(this).addClass('fel');
+                    $(this).attr('opacity','1');
                 }
         });
     
@@ -108,8 +110,222 @@ function(error, rows) {
     d3.select('#noDis').append("svg").attr("width", 'inherit').attr("height", 'inherit').append("g").attr("id","graph4b").selectAll("div");        
     d3.select('#expired').append("svg").attr("width", 'inherit').attr("height", 'inherit').append("g").attr("id","graph5b").selectAll("div");        
 
+});
 
+function countUp(name){
+    $(name).each(function () {
+    $(this).prop('Counter',0).animate({
+        Counter: $(this).text()
+    }, {
+        duration: 3000,
+        easing: 'swing',
+        step: function (now) {
+            $(this).text(Math.ceil(now));
+        }
+    });
+});
+}
+
+function countDown(counthere,id)  {
+    $(id).each(function() {
+  var $this = $(this),
+      countTo = 0;
+  
+  $({ countNum: $this.text()}).animate({
+    countNum: countTo
+  },
+
+  {
+
+    duration: counthere*5,
+    easing:'linear',
+    step: function() {
+      $this.text(Math.floor(this.countNum));
+    },
+    complete: function() {
+      $this.text(this.countNum);
+      //alert('finished');
+    }
+
+  });  
+  
+  
+
+});
+}
+
+var step = 2;
+
+$('#introButton').click(function()  {
+    $('#SearchButton').one("click", function () {
+        
+    });
+    Step2();
+    step++;
+    $('.clicker').css('opacity','1');
+});
+
+$('#foreBtn').click(function(){
+    switch(step){
+        case 2:
+            Step2();
+            break;
+        case 3:
+            Step3();
+            break;
+        case 4:
+            Step4();
+            break;  
+        case 5:
+            Step5();
+            break;                        
+        case 6:
+            Step6();
+            break;
+        default:
+            step = 6;
+            break;
+    }
+            step++;
+    console.log(step);
+});
+
+$('#backBtn').click(function(){  
+step--;
+    switch(step){
+        case 3:
+            Step2();
+            break;
+        case 4:
+            Step3();
+            break;
+        case 5:
+            Step4();
+            break;  
+        case 6:
+            Step5();
+            break;    
+        case 7:
+            Step6();
+            break;                        
+        default:
+            step = 2;
+            Step1();
+    }
+    console.log(step);
+});
+
+function Step1(){
+    var g = 0;
+    var mods = document.getElementById('graph').childNodes;
+    $(mods).each(function(g){
+        $(this).attr("x", function(d){
+        row = g%heightSquares;
+        var numb = ((heightSquares*squareSize) - ((row*squareSize) + (row*gap))) + 33;
+        return numb;  
+        });
+        $(this).attr("y", function(d){
+          col = Math.floor(g/heightSquares);
+          var xnumb = (col*squareSize) + (col*gap);
+          return xnumb;
+        });
+        $(this).appendTo('#graph');     
+        g++;
+    });
     
+    $("#slide2").fadeOut("fast", function() {
+        $(this).addClass('noSee');   
+    });
+    
+    $("#slide1").fadeIn("slow", function() {
+        $(this).removeClass('noSee');   
+    });  
+
+    $('.pt').removeClass('active');
+    $('#cir1').addClass('active');
+
+};
+
+function Step2(){  
+    k = l = m = n = o = p = q = r = s = 0;
+    $('.counters').css('display','inherit');
+    $("rect").not("#graph rect").remove();
+    drawGraphs();
+    $("rect").fadeOut(100);
+    $("rect").each(function(i){
+        $(this).delay(i).fadeIn(100);
+        $(this).removeClass('red');
+        $(this).removeClass('orange');
+        $(this).removeClass('yellow');
+    });
+
+    $("#slide1").fadeOut("fast", function() {
+        $(this).addClass('noSee');   
+    });
+    
+    $("#slide2").fadeIn("slow", function() {
+        $("#slide2").removeClass('noSee');   
+    });    
+    
+    $('.pt').removeClass('active');
+    $('#cir2').addClass('active');
+
+    countUp('.number');
+    
+//    countUp(k,'#felCnt');
+//    countUp(l,'#groCnt');
+//    countUp(m,'#misCnt');
+//    countUp(n,'#fel2Cnt');
+//    countUp(o,'#gro2Cnt');
+//    countUp(p,'#mis2Cnt');
+//    countUp(r,'#revCnt');
+//    countUp(s,'#susCnt');
+//    countUp(q,'#disCnt');
+}
+
+function Step3(){
+    $('.counters').css('display','none');
+    $('rect').not('.fel').fadeOut(1000);
+    $('.fel').css('display','inherit');
+    $('.fel').addClass('red');
+    $('.pt').removeClass('active');
+    $('#cir3').addClass('active');
+}
+
+function Step4(){
+    $('.gro').fadeIn(1000);
+    $('rect').not('.gro').fadeOut(1000);
+    $('.fel').removeClass('orange');
+    $('.gro').addClass('orange');
+    $('.pt').removeClass('active');
+    $('#cir4').addClass('active');
+}
+
+function Step5(){
+    $('.mis').fadeIn(1000);
+    $('rect').not('.mis').fadeOut(1000);
+    $('rect').not('.mis').removeClass('yellow');
+    $('.mis').addClass('yellow');
+    $('.pt').removeClass('active');
+    $('#cir5').addClass('active');
+}
+
+function Step6(){
+    $('rect').not('#noDis rect').not('#mis1 rect').fadeOut(1000);
+    $('#noDis rect').fadeIn(1000);
+    $('#fel1 rect').fadeIn(1000);
+    $('#fel1 > rect').removeClass('mis');
+    $('#fel1 rect').removeClass('gro');
+    $('#mis1 rect').fadeIn(1000);
+    $('#gro1 rect').fadeIn(1000);
+    $('#gro1 rect').removeClass('mis');
+    $('.mis').addClass('yellow');
+    $('.pt').removeClass('active');
+    $('#cir6').addClass('active');
+}
+
+function drawGraphs(){
+    var mods = document.getElementById('graph').childNodes;    
     
         $(mods).each(function(i){
             var stat = d3.select(this).datum().started_out;
@@ -136,7 +352,9 @@ function(error, rows) {
           
       });
                     $(this).addClass('fel');
-                    $(this).clone().appendTo('#graph2');
+                    $(this).removeClass('gro');
+                    $(this).removeClass('mis');
+                    $(this).clone().appendTo('#graph2');                    
                     k++;
                     break;
                 case "GROSS MISDEMEANOR":
@@ -158,8 +376,10 @@ function(error, rows) {
           return (col*squareSize) + (col*gap);
           
       });
+                    $(this).removeClass('fel');
+                    $(this).removeClass('mis');
                     $(this).addClass('gro');
-                    $(this).clone().appendTo('#graph3');
+                    $(this).clone().appendTo('#graph3');                        
                     l++;
                     break;
                 default:
@@ -181,8 +401,10 @@ function(error, rows) {
           return (col*squareSize) + (col*gap);
           
       });
+                    $(this).removeClass('fel');
+                    $(this).removeClass('gro');
                     $(this).addClass('mis');
-                    $(this).clone().appendTo('#graph4');
+                    $(this).clone().appendTo('#graph4');        
                     m++;
     }
             switch(highest){
@@ -329,110 +551,4 @@ function(error, rows) {
     }            
 
         })
-//    countUp(k,'#felCnt');
-//    countUp(l,'#groCnt');
-//    countUp(m,'#misCnt');
-//    countUp(n,'#fel2Cnt');
-//    countUp(o,'#gro2Cnt');
-//    countUp(p,'#mis2Cnt');
-//    countUp(r,'#revCnt');
-//    countUp(s,'#susCnt');
-//    countUp(q,'#disCnt');
-});
-
-function countUp(counthere,id) {
-$(id).each(function() {
-  var $this = $(this),
-      countTo = counthere;
-  
-  $({ countNum: $this.text()}).animate({
-    countNum: countTo
-  },
-
-  {
-
-    duration: counthere*5,
-    easing:'linear',
-    step: function() {
-      $this.text(Math.floor(this.countNum));
-    },
-    complete: function() {
-      $this.text(this.countNum);
-      //alert('finished');
-    }
-
-  });  
-  
-  
-
-});
-}
-
-function countDown(counthere,id)  {
-    $(id).each(function() {
-  var $this = $(this),
-      countTo = 0;
-  
-  $({ countNum: $this.text()}).animate({
-    countNum: countTo
-  },
-
-  {
-
-    duration: counthere*5,
-    easing:'linear',
-    step: function() {
-      $this.text(Math.floor(this.countNum));
-    },
-    complete: function() {
-      $this.text(this.countNum);
-      //alert('finished');
-    }
-
-  });  
-  
-  
-
-});
-}
-
-$('#introButton').click(function()  {
-    Step2();
-});
-
-function Step2(){    
-        $("rect").each(function(i){
-        $(this).delay(i).fadeIn(100);
-    });
-
-    
-    $("#slide1").fadeOut("fast", function() {
-        $(this).addClass('noSee');   
-    });
-    $("#slide2").fadeIn("slow", function() {
-        $("#slide2").removeClass('noSee');   
-    });    
-        countUp(k,'#felCnt');
-    countUp(l,'#groCnt');
-    countUp(m,'#misCnt');
-    countUp(n,'#fel2Cnt');
-    countUp(o,'#gro2Cnt');
-    countUp(p,'#mis2Cnt');
-    countUp(r,'#revCnt');
-    countUp(s,'#susCnt');
-    countUp(q,'#disCnt');
-}
-
-function Step3(){
-    $('rect').not('.gro').fadeOut(1000);
-    $('.gro').addClass('red');
-//    $('#graph4b > rect').fadeIn("fast", function() {
-//        $('#graph4b > rect').toggleClass('orange');
-//    });
-}
-
-function Step4(){
-    $('.mis').fadeIn(1000);
-    $('.gro').fadeOut(1000);
-    $('.mis').addClass('orange');
 }
