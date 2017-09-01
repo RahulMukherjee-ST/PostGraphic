@@ -10,6 +10,48 @@
 }
 */
 
+i.active {
+    color: red;
+}
+
+.pt {
+    color: lightgrey;
+}
+
+.intoLede   {
+    line-height: 18px;
+}
+
+.buttonContent, .clicker  {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.clicker > i    {
+    padding: 0px 2px;
+}
+
+.red {
+    fill: red;
+}
+
+.orange {
+    fill: orange;
+}
+
+#intro     {
+    height: 100px;
+}
+
+.introTitle {
+    text-align: center;
+    margin-top: 15%;
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
 .slider-wrapper    {
     margin: 0 auto;
     width: 320px;

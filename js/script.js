@@ -5,10 +5,22 @@ var width,
     widthSquares = 30,
     heightSquares = 40,
     squareSize = 6,
-    squareValue = 0,
     gap = 1;
     var mobileX = 33;
     var deskX = 33;
+
+    var k = 0;
+    var l = 0;
+    var m = 0;
+    
+    var n = 0;
+    var o = 0;
+    var p = 0;
+    
+    var q = 0;
+    var r = 0;
+    var s = 0;
+
 
 if ($(window).width() < 480 || $(window).height() < 480) {
     widthSquares = 20;
@@ -36,10 +48,10 @@ d3.csv("postdata2.csv", function(d) {
 },
 function(error, rows) {
      var data = rows;
-      height = (squareSize*widthSquares) + widthSquares*gap + 25;
-  width = (squareSize*heightSquares) + heightSquares*gap + 25;
+      height = (squareSize*widthSquares) + heightSquares*gap + 25;
+  width = (squareSize*heightSquares) + widthSquares*gap + 25;
 
-    var waffle = d3.select('#step1')
+    var waffle = d3.select('#intro')
       .append("svg")
       .attr("width", width)
       .attr("height", height)
@@ -52,37 +64,35 @@ function(error, rows) {
       .attr("width", squareSize)
       .attr("height", squareSize)
       .attr("fill","gray")
-      .attr("x", function(d, i){
-                  row = i%heightSquares;
-        if ($(window).width() < 480 || $(window).height() < 480) {
-            return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + mobileX )
-        }     
-          
-//        row = i%heightSquares;
-        return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + deskX )
-
+      .attr("x", function(d, i)
+        {
           //group n squares for column
-//          col = Math.floor(i/heightSquares);
-//          return (col*squareSize) + (col*gap);
-        })
-      .attr("y", function(d, i){
-          
-        col = Math.floor(i/heightSquares);
+          col = Math.floor(i%heightSquares);
           return (col*squareSize) + (col*gap);
-          
-      });
+        })
+      .attr("y", function(d, i)
+      {
+        row = i%heightSquares;
+        return (heightSquares*squareSize) - ((row*squareSize) + (row*gap));
+      }).style('display','none')
+    
         var mods = document.getElementById('graph').childNodes;
-    var k = 0;
-    var l = 0;
-    var m = 0;
     
-    var n = 0;
-    var o = 0;
-    var p = 0;
     
-    var q = 0;
-    var r = 0;
-    var s = 0;
+        $(mods).each(function(i){
+                var dis = d3.select(this).datum().disipline_bucket; 
+                if(dis = "Revocation/Surrender license")
+                    {
+                        $(this).addClass('gro');
+                    }
+                else    {
+                    $(this).addClass('fel');
+                }
+        });
+    
+            $("rect").each(function(i){
+            $(this).delay(i*3).fadeIn(100);
+        });
 
 
     d3.select('#fel1').append("svg").attr("width", 'inherit').attr("height", 'inherit').append("g").attr("id","graph2").selectAll("div");
@@ -125,8 +135,8 @@ function(error, rows) {
           return (col*squareSize) + (col*gap);
           
       });
+                    $(this).addClass('fel');
                     $(this).clone().appendTo('#graph2');
-                    $(this).prependTo('#graph');
                     k++;
                     break;
                 case "GROSS MISDEMEANOR":
@@ -148,6 +158,7 @@ function(error, rows) {
           return (col*squareSize) + (col*gap);
           
       });
+                    $(this).addClass('gro');
                     $(this).clone().appendTo('#graph3');
                     l++;
                     break;
@@ -170,8 +181,8 @@ function(error, rows) {
           return (col*squareSize) + (col*gap);
           
       });
+                    $(this).addClass('mis');
                     $(this).clone().appendTo('#graph4');
-                    $(this).appendTo('#graph');
                     m++;
     }
             switch(highest){
@@ -195,7 +206,6 @@ function(error, rows) {
           
       });
                     $(this).clone().appendTo('#graph2a');
-                    $(this).prependTo('#graph');
                     n++;
                     break;
                 case "GROSS MISDEMEANOR":
@@ -217,6 +227,8 @@ function(error, rows) {
           return (col*squareSize) + (col*gap);
           
       });
+                    $(this).removeClass('fel');
+                    $(this).addClass('gro');
                     $(this).clone().appendTo('#graph3a');
                     o++;
                     break;
@@ -239,8 +251,10 @@ function(error, rows) {
           return (col*squareSize) + (col*gap);
           
       });
+                    $(this).removeClass('fel');
+                    $(this).removeClass('gro');
+                    $(this).addClass('mis');
                     $(this).clone().appendTo('#graph4a');
-                    $(this).appendTo('#graph');
                     p++;
     }
             switch(displine){
@@ -264,8 +278,6 @@ function(error, rows) {
           
       });
                     $(this).clone().appendTo('#graph4b');
-                    $(this).prependTo('#graph');
-                    $('#graph4b > rect').css('fill','orange');
                     q++;
                     break;
                 case "Revocation/Surrender license":
@@ -317,15 +329,15 @@ function(error, rows) {
     }            
 
         })
-    countUp(k,'#felCnt');
-    countUp(l,'#groCnt');
-    countUp(m,'#misCnt');
-    countUp(n,'#fel2Cnt');
-    countUp(o,'#gro2Cnt');
-    countUp(p,'#mis2Cnt');
-    countUp(r,'#revCnt');
-    countUp(s,'#susCnt');
-    countUp(q,'#disCnt');
+//    countUp(k,'#felCnt');
+//    countUp(l,'#groCnt');
+//    countUp(m,'#misCnt');
+//    countUp(n,'#fel2Cnt');
+//    countUp(o,'#gro2Cnt');
+//    countUp(p,'#mis2Cnt');
+//    countUp(r,'#revCnt');
+//    countUp(s,'#susCnt');
+//    countUp(q,'#disCnt');
 });
 
 function countUp(counthere,id) {
@@ -382,4 +394,45 @@ function countDown(counthere,id)  {
   
 
 });
+}
+
+$('#introButton').click(function()  {
+    Step2();
+});
+
+function Step2(){    
+        $("rect").each(function(i){
+        $(this).delay(i).fadeIn(100);
+    });
+
+    
+    $("#slide1").fadeOut("fast", function() {
+        $(this).addClass('noSee');   
+    });
+    $("#slide2").fadeIn("slow", function() {
+        $("#slide2").removeClass('noSee');   
+    });    
+        countUp(k,'#felCnt');
+    countUp(l,'#groCnt');
+    countUp(m,'#misCnt');
+    countUp(n,'#fel2Cnt');
+    countUp(o,'#gro2Cnt');
+    countUp(p,'#mis2Cnt');
+    countUp(r,'#revCnt');
+    countUp(s,'#susCnt');
+    countUp(q,'#disCnt');
+}
+
+function Step3(){
+    $('rect').not('.gro').fadeOut(1000);
+    $('.gro').addClass('red');
+//    $('#graph4b > rect').fadeIn("fast", function() {
+//        $('#graph4b > rect').toggleClass('orange');
+//    });
+}
+
+function Step4(){
+    $('.mis').fadeIn(1000);
+    $('.gro').fadeOut(1000);
+    $('.mis').addClass('orange');
 }
