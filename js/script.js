@@ -6,8 +6,8 @@ var width,
     heightSquares = 40,
     squareSize = 6,
     gap = 1;
-    var mobileX = 33;
-    var deskX = 33;
+    var mobileX = 240;
+    var deskX = 240;
 
     var k = 0;
     var l = 0;
@@ -20,6 +20,7 @@ var width,
     var q = 0;
     var r = 0;
     var s = 0;
+    var t = 0;
 
 
 if ($(window).width() < 480 || $(window).height() < 480) {
@@ -66,7 +67,7 @@ function(error, rows) {
       .attr("fill","gray")
       .attr("x", function(d, i){
         row = i%heightSquares;
-        var numb = ((heightSquares*squareSize) - ((row*squareSize) + (row*gap))) + deskX;
+        var numb = (((row*squareSize) + (row*gap)) + (heightSquares*squareSize)) - deskX;
         return numb;          
         })
       .attr("y", function(d, i){
@@ -108,7 +109,7 @@ function(error, rows) {
     d3.select('#revSur').append("svg").attr("width", 'inherit').attr("height", 'inherit').append("g").attr("id","graph2b").selectAll("div");
     d3.select('#susPro').append("svg").attr("width", 'inherit').attr("height", 'inherit').append("g").attr("id","graph3b").selectAll("div");   
     d3.select('#noDis').append("svg").attr("width", 'inherit').attr("height", 'inherit').append("g").attr("id","graph4b").selectAll("div");        
-    d3.select('#expired').append("svg").attr("width", 'inherit').attr("height", 'inherit').append("g").attr("id","graph5b").selectAll("div");        
+    d3.select('#exp').append("svg").attr("width", 'inherit').attr("height", 'inherit').append("g").attr("id","graph5b").selectAll("div");        
 
 });
 
@@ -157,9 +158,6 @@ function countDown(counthere,id)  {
 var step = 2;
 
 $('#introButton').click(function()  {
-    $('#SearchButton').one("click", function () {
-        
-    });
     Step2();
     step++;
     $('.clicker').css('opacity','1');
@@ -215,14 +213,68 @@ step--;
     console.log(step);
 });
 
+$("body").keydown(function(e) {
+  if(e.keyCode == 37) { // left
+      step--;
+    switch(step){
+        case 3:
+            Step2();
+            break;
+        case 4:
+            Step3();
+            break;
+        case 5:
+            Step4();
+            break;  
+        case 6:
+            Step5();
+            break;    
+        case 7:
+            Step6();
+            break;                        
+        default:
+            step = 2;
+            Step1();
+    }
+    console.log(step);
+
+  }
+  else if(e.keyCode == 39) { // right
+             $('.clicker').css('opacity','1');
+          switch(step){
+        case 2:
+            Step2();
+            break;
+        case 3:
+            Step3();
+            break;
+        case 4:
+            Step4();
+            break;  
+        case 5:
+            Step5();
+            break;                        
+        case 6:
+            Step6();
+            break;
+        default:
+            step = 6;
+            break;
+    }
+            step++;
+    console.log(step);
+
+  }
+});
+
 function Step1(){
     var g = 0;
     var mods = document.getElementById('graph').childNodes;
     $(mods).each(function(g){
         $(this).attr("x", function(d){
         row = g%heightSquares;
-        var numb = ((heightSquares*squareSize) - ((row*squareSize) + (row*gap))) + 33;
-        return numb;  
+        var numb = (((row*squareSize) + (row*gap)) + (heightSquares*squareSize)) - deskX;
+        return numb;          
         });
         $(this).attr("y", function(d){
           col = Math.floor(g/heightSquares);
@@ -247,7 +299,8 @@ function Step1(){
 };
 
 function Step2(){  
-    k = l = m = n = o = p = q = r = s = 0;
+    k = l = m = n = o = p = q = r = s = t = 0;
+    $('rect').css('opacity','1.0');
     $('.counters').css('display','inherit');
     $("rect").not("#graph rect").remove();
     drawGraphs();
@@ -269,7 +322,7 @@ function Step2(){
     
     $('.pt').removeClass('active');
     $('#cir2').addClass('active');
-
+    $('#text').text('Of 109 Cases Chagred as Felonies, 42 were reduced to lesser voncictions in court. Of the 64 Felony convictions upheld, all but three ended in cops having their licenses revoked.');
     countUp('.number');
     
 //    countUp(k,'#felCnt');
@@ -284,44 +337,59 @@ function Step2(){
 }
 
 function Step3(){
-    $('.counters').css('display','none');
-    $('rect').not('.fel').fadeOut(1000);
-    $('.fel').css('display','inherit');
+    $('.fel').fadeTo( 1000, 1.0 );
+    $('rect').not('.fel').fadeTo( 1000, .2 );
     $('.fel').addClass('red');
     $('.pt').removeClass('active');
+    $('.gro').removeClass('orange');    
+    $('.mis').removeClass('yellow'); 
     $('#cir3').addClass('active');
+    $('#text').text('Of 109 Cases Chagred as Felonies, 42 were reduced to lesser voncictions in court. Of the 64 Felony convictions upheld, all but three ended in cops having their licenses revoked.');
 }
 
 function Step4(){
-    $('.gro').fadeIn(1000);
-    $('rect').not('.gro').fadeOut(1000);
-    $('.fel').removeClass('orange');
+    $('.gro').fadeTo( 1000, 1.0 );
+    $('rect').not('.gro').fadeTo( 1000, .2 );
+//    $('.fel').removeClass('orange');
+    $('.fel').removeClass('red');
     $('.gro').addClass('orange');
+//    $('.fel').removeClass('orange');    
+    $('.mis').removeClass('yellow');
     $('.pt').removeClass('active');
-    $('#cir4').addClass('active');
+    $('#cir4').addClass('active');    
+    $('#text').text('Of 110 gross misdemeanor convictions, 68 resulted in no discipline while 42 others resulted in revoked or suspended licenses.');
+    
 }
 
 function Step5(){
-    $('.mis').fadeIn(1000);
-    $('rect').not('.mis').fadeOut(1000);
+    $('.mis').fadeTo( 1000, 1.0 );
+    $('rect').not('.mis').fadeTo( 1000, .2 );
     $('rect').not('.mis').removeClass('yellow');
     $('.mis').addClass('yellow');
+    $('.gro').removeClass('orange');
     $('.pt').removeClass('active');
     $('#cir5').addClass('active');
+    $('.fel').removeClass('red');
+    $('#text').text('And of 434 misdemeanors convictions, 402 resulted in no discipline. Only 32 of those convictions resulted in revoked or suspended licenses');    
 }
 
 function Step6(){
-    $('rect').not('#noDis rect').not('#mis1 rect').fadeOut(1000);
-    $('#noDis rect').fadeIn(1000);
-    $('#fel1 rect').fadeIn(1000);
+    $('rect').not('#noDis rect').not('#mis1 rect').fadeTo( 1000, .2 );
+    $('#noDis rect').fadeTo( 1000, 1.0 );
+    $('#noDis rect.fel').addClass('red');
+    $('#noDis rect.gro').addClass('orange');
+    $('#fel1 rect').fadeTo( 1000, 1.0 );
     $('#fel1 > rect').removeClass('mis');
     $('#fel1 rect').removeClass('gro');
-    $('#mis1 rect').fadeIn(1000);
-    $('#gro1 rect').fadeIn(1000);
+    $('#fel1 rect').addClass('red');
+    $('#gro1 rect').addClass('orange');
+    $('#mis1 rect').fadeTo( 1000, 1.0 );
+    $('#gro1 rect').fadeTo( 1000, 1.0 );
     $('#gro1 rect').removeClass('mis');
-    $('.mis').addClass('yellow');
+    $('rect').not('#noDis rect').not('#mis1 rect').removeClass('yellow');
     $('.pt').removeClass('active');
     $('#cir6').addClass('active');
+    $('#text').text('Over two decades, 75 percent of cases involving Minnesota cops committing crimes went undisciplined by the POST board.');        
 }
 
 function drawGraphs(){
@@ -339,7 +407,7 @@ function drawGraphs(){
             return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + mobileX )
         }     
           
-        return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + deskX )
+        return (((row*squareSize) + (row*gap)) + (heightSquares*squareSize)) - deskX
 
 //          group n squares for column
 //          col = Math.floor(k/heightSquares);
@@ -352,8 +420,8 @@ function drawGraphs(){
           
       });
                     $(this).addClass('fel');
-                    $(this).removeClass('gro');
-                    $(this).removeClass('mis');
+//                    $(this).removeClass('gro');
+//                    $(this).removeClass('mis');
                     $(this).clone().appendTo('#graph2');                    
                     k++;
                     break;
@@ -364,7 +432,7 @@ function drawGraphs(){
             return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + mobileX )
         }     
           
-        return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + deskX )
+        return (((row*squareSize) + (row*gap)) + (heightSquares*squareSize)) - deskX
 
 //          group n squares for column
 //          col = Math.floor(k/heightSquares);
@@ -376,8 +444,8 @@ function drawGraphs(){
           return (col*squareSize) + (col*gap);
           
       });
-                    $(this).removeClass('fel');
-                    $(this).removeClass('mis');
+//                    $(this).removeClass('fel');
+//                    $(this).removeClass('mis');
                     $(this).addClass('gro');
                     $(this).clone().appendTo('#graph3');                        
                     l++;
@@ -389,7 +457,7 @@ function drawGraphs(){
             return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + mobileX )
         }     
           
-        return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + deskX )
+        return (((row*squareSize) + (row*gap)) + (heightSquares*squareSize)) - deskX
 
 //          group n squares for column
 //          col = Math.floor(k/heightSquares);
@@ -401,8 +469,8 @@ function drawGraphs(){
           return (col*squareSize) + (col*gap);
           
       });
-                    $(this).removeClass('fel');
-                    $(this).removeClass('gro');
+//                    $(this).removeClass('fel');
+//                    $(this).removeClass('gro');
                     $(this).addClass('mis');
                     $(this).clone().appendTo('#graph4');        
                     m++;
@@ -415,7 +483,7 @@ function drawGraphs(){
             return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + mobileX )
         }     
           
-        return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + deskX )
+        return (((row*squareSize) + (row*gap)) + (heightSquares*squareSize)) - deskX
 
 //          group n squares for column
 //          col = Math.floor(k/heightSquares);
@@ -437,7 +505,7 @@ function drawGraphs(){
             return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + mobileX )
         }     
           
-        return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + deskX )
+        return (((row*squareSize) + (row*gap)) + (heightSquares*squareSize)) - deskX
 
 //          group n squares for column
 //          col = Math.floor(k/heightSquares);
@@ -449,7 +517,7 @@ function drawGraphs(){
           return (col*squareSize) + (col*gap);
           
       });
-                    $(this).removeClass('fel');
+//                    $(this).removeClass('fel');
                     $(this).addClass('gro');
                     $(this).clone().appendTo('#graph3a');
                     o++;
@@ -461,7 +529,7 @@ function drawGraphs(){
             return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + mobileX )
         }     
           
-        return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + deskX )
+        return (((row*squareSize) + (row*gap)) + (heightSquares*squareSize)) - deskX
 
 //          group n squares for column
 //          col = Math.floor(k/heightSquares);
@@ -473,8 +541,8 @@ function drawGraphs(){
           return (col*squareSize) + (col*gap);
           
       });
-                    $(this).removeClass('fel');
-                    $(this).removeClass('gro');
+//                    $(this).removeClass('fel');
+//                    $(this).removeClass('gro');
                     $(this).addClass('mis');
                     $(this).clone().appendTo('#graph4a');
                     p++;
@@ -487,7 +555,7 @@ function drawGraphs(){
             return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + mobileX )
         }     
           
-        return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + deskX )
+        return (((row*squareSize) + (row*gap)) + (heightSquares*squareSize)) - deskX
 
 //          group n squares for column
 //          col = Math.floor(k/heightSquares);
@@ -509,7 +577,7 @@ function drawGraphs(){
             return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + mobileX )
         }     
           
-        return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + deskX )
+        return (((row*squareSize) + (row*gap)) + (heightSquares*squareSize)) - deskX
 
 //          group n squares for column
 //          col = Math.floor(k/heightSquares);
@@ -531,7 +599,7 @@ function drawGraphs(){
             return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + mobileX )
         }                      
                         
-        return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + deskX )
+        return (((row*squareSize) + (row*gap)) + (heightSquares*squareSize)) - deskX
 
 //          group n squares for column
 //          col = Math.floor(k/heightSquares);
@@ -547,6 +615,26 @@ function drawGraphs(){
                     s++;
                     break;
                 default:
+                    $(this).attr("x",  function(d){
+                  row = (t%heightSquares);
+        if ($(window).width() < 480 || $(window).height() < 480) {
+            return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + mobileX )
+        }                      
+                        
+        return (((row*squareSize) + (row*gap)) + (heightSquares*squareSize)) - deskX
+
+//          group n squares for column
+//          col = Math.floor(k/heightSquares);
+//          return (col*squareSize) + (col*gap);
+        });
+                    $(this).attr("y", function(d){
+          
+        col = Math.floor(t/heightSquares);
+          return (col*squareSize) + (col*gap);
+          
+      });
+                    $(this).clone().appendTo('#graph5b'); 
+                    t++;
                     break;
     }            
 

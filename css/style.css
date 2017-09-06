@@ -2,6 +2,13 @@
     z-index: 0;
 }
 
+#felAr1    {
+    width: 30px;
+    position: absolute;
+    left: 290px;
+    top: 155px;
+}
+
 .slider-wrapper > label {
     display: inline-block;
     margin: 5px;
@@ -11,6 +18,10 @@
 .clicker    {
     opacity: 0;
     z-index: 20;
+}
+
+.count  {
+    display: none;
 }
 
 .lbl    {
@@ -118,6 +129,10 @@ div > p {
     margin-bottom: 20px;
 }
 
+.box#exp, .box#susPro   {
+    height: 16px;
+}
+
 .box.main   {
     height: 100px;
     overflow: visible;
@@ -152,10 +167,6 @@ div > p {
 
 .box#revSur {
     height: 50px;
-}
-
-.box#susPro {
-    height: 75px;
 }
 
 .box#noDis {
