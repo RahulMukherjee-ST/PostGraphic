@@ -2,11 +2,39 @@
     z-index: 0;
 }
 
-#felAr1    {
-    width: 30px;
+.arrows > div   {
     position: absolute;
-    left: 290px;
-    top: 155px;
+}
+
+#felArrows  {
+    width: 380px;
+    top: 135px;
+    left: 765px;
+    display: none;
+}
+
+#groArrows  {
+    width: 370px;
+    top: 235px;
+    left: 771px;
+    height: 218px;    
+    display: none;
+}
+
+#misArrows  {
+    width: 370px;
+    top: 319px;
+    left: 768px;
+    height: 218px;    
+    display: none;
+}
+
+#disArrows  {
+    width: 370px;
+    top: 153px;
+    left: 768px;
+    height: 218px;    
+    display: none;
 }
 
 .slider-wrapper > label {
@@ -37,6 +65,7 @@
 
 #text   {
     font-size: 18px;
+    line-height: 21px;
 }
 
 .columns    {
@@ -79,6 +108,10 @@ i.active {
 
 .yellow {
     fill: #f4dc42;
+}
+
+.grayFill   {
+    fill: gray;
 }
 
 #intro, #intro > svg    {

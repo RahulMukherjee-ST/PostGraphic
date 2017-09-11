@@ -22,7 +22,6 @@ var width,
     var s = 0;
     var t = 0;
 
-
 if ($(window).width() < 480 || $(window).height() < 480) {
     widthSquares = 20;
     heightSquares = 40;
@@ -84,12 +83,12 @@ function(error, rows) {
         $(mods).each(function(i){
                 var dis = d3.select(this).datum().disipline_bucket; 
                 console.log(dis);
-                if(dis = "Revocation/Surrender license")
+                if(dis == "No discipline")
                 {
-                    $(this).attr('border','1px solid red');
+                    $(this).css('opacity','1');
                 }
                 else    {
-                    $(this).attr('opacity','1');
+                    $(this).css('opacity','0.2');
                 }
         });
     
@@ -185,7 +184,6 @@ $('#foreBtn').click(function(){
             break;
     }
             step++;
-    console.log(step);
 });
 
 $('#backBtn').click(function(){  
@@ -210,7 +208,6 @@ step--;
             step = 2;
             Step1();
     }
-    console.log(step);
 });
 
 $("body").keydown(function(e) {
@@ -236,7 +233,6 @@ $("body").keydown(function(e) {
             step = 2;
             Step1();
     }
-    console.log(step);
 
   }
   else if(e.keyCode == 39) { // right
@@ -262,7 +258,6 @@ $("body").keydown(function(e) {
             break;
     }
             step++;
-    console.log(step);
 
   }
 });
@@ -293,18 +288,36 @@ function Step1(){
         $(this).removeClass('noSee');   
     });  
 
+    $('rect').addClass('grayFill');
     $('.pt').removeClass('active');
     $('#cir1').addClass('active');
+    
+        var mods = document.getElementById('graph').childNodes;
+    
+    
+        $(mods).each(function(i){
+                var dis = d3.select(this).datum().disipline_bucket; 
+                console.log(dis);
+                if(dis == "No discipline")
+                {
+                    $(this).css('opacity','1');
+                }
+                else    {
+                    $(this).css('opacity','0.2');
+                }
+        });    
 
 };
 
 function Step2(){  
-    k = l = m = n = o = p = q = r = s = t = 0;
+    $('rect').removeClass('grayFill');    
     $('rect').css('opacity','1.0');
     $('.counters').css('display','inherit');
     $("rect").not("#graph rect").remove();
     
     var mods = document.getElementById('graph').childNodes;   
+    
+    k = l = m = 0;
     
     $(mods).each(function(i){
     var stat = d3.select(this).datum().started_out;
@@ -390,6 +403,12 @@ function Step2(){
     });
     
     $('.gro2Box').css( 'opacity', '0' );
+    $('.fel2Box').css( 'opacity', '0' );
+    $('.mis2Box').css( 'opacity', '0' );
+    $('.DisBox').css( 'opacity', '0' );
+    $('.ExpBox').css( 'opacity', '0' );
+    $('.RevBox').css( 'opacity', '0' ); 
+    $('.SusBox').css( 'opacity', '0' );    
     
     $("rect").fadeOut(100);
     $("rect").each(function(i){
@@ -412,11 +431,18 @@ function Step2(){
     $('#text').text('Of 109 Cases Chagred as Felonies, 42 were reduced to lesser voncictions in court. Of the 64 Felony convictions upheld, all but three ended in cops having their licenses revoked.');
     countUp('.count');
     
+    $("#felArrows").css('display','none');
+    
 }
 
 function Step3(){
     
-    DrawEm("FELONY");
+    $("rect.fel").not("#graph rect").not("#graph2 rect").remove();
+    
+    $("#felArrows").css('display','inherit');
+    $("#groArrows").css('display','none');
+    
+    DrawEm("FELONY",0,0,0,0,0,0,0); 
     
 //    var mods = document.getElementById('graph').childNodes;
 //    $(mods).each(function(i){
@@ -595,16 +621,18 @@ function Step3(){
     $('.fel').fadeTo( 500, 1.0 );
     $('rect').not('.fel').fadeTo( 500, .2 );
     $('.fel').addClass('red');
+    $('.fel').removeClass('mis');
+    $('.fel').removeClass('gro');
     $('.gro2Box').css( 'opacity', '1.0' );
     $('.fel2Box').css( 'opacity', '1.0' );
     $('.mis2Box').css( 'opacity', '1.0' );
-    $('.ExpBox').css( 'opacity', '1.0' );
-    $('.RevBox').css( 'opacity', '1.0' );
-    $('.SusBox').css( 'opacity', '1.0' );   
+//    $('.ExpBox').css( 'opacity', '1.0' );
+//    $('.RevBox').css( 'opacity', '1.0' );
+//    $('.SusBox').css( 'opacity', '1.0' );   
     $('.DisBox').css( 'opacity', '1.0' );    
     $('.pt').removeClass('active');
-    $('.gro').removeClass('orange');    
-    $('.mis').removeClass('yellow'); 
+//    $('.gro').removeClass('orange');    
+//    $('.mis').removeClass('yellow'); 
     $('#cir3').addClass('active');
     $('#text').text('Of 109 Cases Chagred as Felonies, 42 were reduced to lesser voncictions in court. Of the 64 Felony convictions upheld, all but three ended in cops having their licenses revoked.');
     $('.fel').not('#graph2 > rect').css('opacity','0.0');
@@ -614,48 +642,168 @@ function Step3(){
 }
 
 function Step4(){
+
+    $("rect.gro").not("#graph rect").not("#graph3 rect").remove();
+    
+    DrawEm("GROSS MISDEMEANOR",67,17,25,24,78,2,5);
     $('.gro').fadeTo( 500, 1.0 );
     $('rect').not('.gro').fadeTo( 500, .2 );
-//    $('.fel').removeClass('orange');
-    $('.fel').removeClass('red');
-    $('.gro').addClass('orange');
-//    $('.fel').removeClass('orange');    
-    $('.mis').removeClass('yellow');
+    $('.gro').removeClass('mis');
     $('.pt').removeClass('active');
     $('#cir4').addClass('active');    
     $('#text').text('Of 110 gross misdemeanor convictions, 68 resulted in no discipline while 42 others resulted in revoked or suspended licenses.');
     
+    $("#felArrows").css('display','none');
+    $("#misArrows").css('display','none');
+    $("#groArrows").css('display','inherit');    
+    
 }
 
 function Step5(){
-    $('.mis').fadeTo( 1000, 1.0 );
-    $('rect').not('.mis').fadeTo( 1000, .2 );
+    
+    $("rect.mis").not("#graph rect").not("#graph4 rect").remove();    
+    
+    DrawEm("MISDEMEANOR",67,115,119,171,95,22,13);
+    $('.fel').removeClass('mis');
+    $('.gro').removeClass('mis');
+    $('.mis').fadeTo( 500, 1.0 );
+    $('.fel2Box').fadeTo( 500, 1.0 );
+    $('.mis2Box').fadeTo( 500, 1.0 );  
+    $('.gro2Box').fadeTo( 500, 1.0 );    
+    $('rect').not('.mis').fadeTo( 500, .2 );
     $('rect').not('.mis').removeClass('yellow');
-    $('.mis').addClass('yellow');
-    $('.gro').removeClass('orange');
+//    $('.mis').addClass('yellow');
+//    $('.gro').removeClass('orange');
     $('.pt').removeClass('active');
     $('#cir5').addClass('active');
-    $('.fel').removeClass('red');
+    $('.ExpBox').css( 'opacity', '0' );
+    $('.RevBox').css( 'opacity', '0' ); 
+    $('.SusBox').css( 'opacity', '0' );        
     $('#text').text('And of 434 misdemeanors convictions, 402 resulted in no discipline. Only 32 of those convictions resulted in revoked or suspended licenses');    
+    $("#groArrows").css('display','none');    
+    $("#misArrows").css('display','inherit');
+    $("#disArrows").css('display','none');
+
+
 }
 
 function Step6(){
-    $('rect').not('#noDis rect').not('#mis1 rect').fadeTo( 1000, .2 );
-    $('#noDis rect').fadeTo( 1000, 1.0 );
+    $("#step2 rect").remove();
+    $("#misArrows").css('display','none');
+    var mods = document.getElementById('graph').childNodes;   
+    
+    k = l = m = 0;
+    
+    $(mods).each(function(i){
+    var stat = d3.select(this).datum().started_out;
+    var lastOne = d3.select(this).datum().disipline_bucket;
+    switch(stat){
+                case "FELONY":
+                    $(this).attr("x",  function(d){
+                  row = (k%heightSquares);
+        if ($(window).width() < 480 || $(window).height() < 480) {
+            return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + mobileX )
+        }     
+          
+        return (((row*squareSize) + (row*gap)) + (heightSquares*squareSize)) - deskX
+
+//          group n squares for column
+//          col = Math.floor(k/heightSquares);
+//          return (col*squareSize) + (col*gap);
+        });
+                    $(this).attr("y", function(d){
+          
+        col = Math.floor(k/heightSquares);
+          return (col*squareSize) + (col*gap);
+          
+      });
+                    $(this).addClass('fel');
+                    $(this).attr('fill','red');
+                    $(this).removeClass('gro');
+                    $(this).removeClass('mis');
+                    $(this).clone().appendTo('#graph2');                 
+                    k++;
+                    break;
+                case "GROSS MISDEMEANOR":
+                    $(this).attr("x",  function(d){
+                  row = (l%heightSquares);
+        if ($(window).width() < 480 || $(window).height() < 480) {
+            return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + mobileX )
+        }     
+          
+        return (((row*squareSize) + (row*gap)) + (heightSquares*squareSize)) - deskX
+
+//          group n squares for column
+//          col = Math.floor(k/heightSquares);
+//          return (col*squareSize) + (col*gap);
+        });
+                    $(this).attr("y", function(d){
+          
+        col = Math.floor(l/heightSquares);
+          return (col*squareSize) + (col*gap);
+          
+      });
+                    $(this).removeClass('fel');
+                    $(this).removeClass('mis');
+                    $(this).addClass('gro');
+                    $(this).attr('fill','orange');
+                    $(this).clone().appendTo('#graph3');                        
+                    l++;
+                    break;
+                default:
+                    $(this).attr("x",  function(d){
+                  row = (m%heightSquares);
+        if ($(window).width() < 480 || $(window).height() < 480) {
+            return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + mobileX )
+        }     
+          
+        return (((row*squareSize) + (row*gap)) + (heightSquares*squareSize)) - deskX
+
+//          group n squares for column
+//          col = Math.floor(k/heightSquares);
+//          return (col*squareSize) + (col*gap);
+        });
+                    $(this).attr("y", function(d){
+          
+        col = Math.floor(m/heightSquares);
+          return (col*squareSize) + (col*gap);
+          
+      });
+                    $(this).removeClass('fel');
+                    $(this).removeClass('gro');
+                    $(this).addClass('mis');
+                    $(this).attr('fill','yellow');
+                    $(this).clone().appendTo('#graph4');        
+                    m++;
+    }
+                    
+    });
+    $('rect').not('#noDis rect').not('#mis1 rect').fadeTo( 500, .2 );
+    $('#noDis rect').fadeTo( 500, 1.0 );
     $('#noDis rect.fel').addClass('red');
     $('#noDis rect.gro').addClass('orange');
-    $('#fel1 rect').fadeTo( 1000, 1.0 );
+    $('#fel1 rect').fadeTo( 500, 1.0 );
     $('#fel1 > rect').removeClass('mis');
     $('#fel1 rect').removeClass('gro');
     $('#fel1 rect').addClass('red');
     $('#gro1 rect').addClass('orange');
-    $('#mis1 rect').fadeTo( 1000, 1.0 );
-    $('#gro1 rect').fadeTo( 1000, 1.0 );
+    $('#mis1 rect').fadeTo( 500, 1.0 );
+    $('#gro1 rect').fadeTo( 500, 1.0 );
+    $('.fel2Box').fadeTo( 500, 0 );
+    $('.mis2Box').fadeTo( 500, 0 );  
+    $('.gro2Box').fadeTo( 500, 0 );
+    $('.ExpBox').fadeTo( 500, 1.0 );
+    $('.RevBox').fadeTo( 500, 1.0 );  
+    $('.SusBox').fadeTo( 500, 1.0 );    
+    $('.ExpBox rect').addClass('grayFill');
+    $('.RevBox rect').addClass('grayFill'); 
+    $('.SusBox rect').addClass('grayFill');  
     $('#gro1 rect').removeClass('mis');
     $('rect').not('#noDis rect').not('#mis1 rect').removeClass('yellow');
     $('.pt').removeClass('active');
     $('#cir6').addClass('active');
-    $('#text').text('Over two decades, 75 percent of cases involving Minnesota cops committing crimes went undisciplined by the POST board.');        
+    $('#text').text('Over two decades, 75 percent of cases involving Minnesota cops committing crimes went undisciplined by the POST board.');    
+    $("#disArrows").css('display','inherit');
 }
 
 function drawGraphs(){
@@ -913,8 +1061,15 @@ function drawGraphs(){
         })
 }
 
-function DrawEm (crimeType){
-        var mods = document.getElementById('graph').childNodes;
+function DrawEm (crimeType,num1,num2,num3,num4,num5,num6,num7){
+    n = num1;
+    o = num2;
+    p = num3;
+    q = num4;
+    r = num5;
+    s = num6;
+    t = num7;
+    var mods = document.getElementById('graph').childNodes;
     $(mods).each(function(i){
         var started = d3.select(this).datum().started_out;
         var highest = d3.select(this).datum().highestDegree;
@@ -1088,4 +1243,11 @@ function DrawEm (crimeType){
         }
         
 });
+    console.log(n);
+    console.log(o);
+    console.log(p);
+    console.log(q);
+    console.log(r);
+    console.log(s);
+    console.log(t);
 }
