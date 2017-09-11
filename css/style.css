@@ -20,8 +20,8 @@
     z-index: 20;
 }
 
-#trdCol, #secCol    {
-    display: none;
+#trdCol > div, #secCol > div   {
+    opacity: 0;
 }
 
 .lbl    {
