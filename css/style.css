@@ -4,35 +4,36 @@
 
 .arrows > div   {
     position: absolute;
+    z-index: -10;
 }
 
 #felArrows  {
-    width: 380px;
-    top: 144px;
-    left: 765px;
+    width: 291px;
+    top: 136px;
+    left: 329px;
     display: none;
 }
 
 #groArrows  {
-    width: 370px;
-    top: 243px;
-    left: 40%;
+    width: 291px;
+    top: 236px;
+    left: 330px;
     height: 218px;    
     display: none;
 }
 
 #misArrows  {
-    width: 370px;
-    top: 327px;
-    left: 768px;
+    width: 291px;
+    top: 330px;
+    left: 329px;
     height: 218px;    
     display: none;
 }
 
 #disArrows  {
-    width: 370px;
-    top: 153px;
-    left: 768px;
+    width: 284px;
+    top: 140px;
+    left: 332px;
     height: 218px;    
     display: none;
 }
@@ -46,6 +47,10 @@
 .clicker    {
     opacity: 0;
     z-index: 20;
+}
+
+.clicker:hover {
+    cursor: pointer;
 }
 
 #trdCol > div, #secCol > div   {
@@ -75,10 +80,6 @@
 
 i.active {
     color: red;
-}
-
-#intro > svg    {
-    margin-left: 26px;
 }
 
 .pt {
@@ -115,8 +116,12 @@ i.active {
     fill: gray;
 }
 
+#introButton    {
+    margin-top: 10px;
+}
+
 #intro, #intro > svg    {
-    height: 130px;
+    height: 140px;
 }
 
 .introTitle {

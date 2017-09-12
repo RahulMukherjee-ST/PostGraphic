@@ -2,12 +2,13 @@
 
 var width,
     height,
-    widthSquares = 30,
-    heightSquares = 40,
+    widthSquares = 40,
+    introheightSquares = 40,
+    heightSquares = 33,
     squareSize = 6,
     gap = 1;
     var mobileX = 240;
-    var deskX = 240;
+    var deskX = 198;
 
     var k = 0;
     var l = 0;
@@ -735,8 +736,6 @@ function Step6(){
     });
     $('rect').not('#noDis rect').not('#mis1 rect').fadeTo( 500, .2 );
     $('#noDis rect').fadeTo( 500, 1.0 );
-//    $('#noDis rect.fel').addClass('red');
-//    $('#noDis rect.gro').addClass('orange');
     $('#fel1 rect').fadeTo( 500, 1.0 );
     $('#fel1 > rect').removeClass('mis');
     $('#fel1 rect').removeClass('gro');
@@ -762,6 +761,11 @@ function Step6(){
     $('#text').text('The net result is that nearly 3 in 4 criminal convictions results in no state discipline for the officer.');    
     $("#disArrows").fadeTo( 500, 1.0 );
 }
+
+//$('#cir3').click(function() {
+//    Step3();
+//    step = 4;
+//});
 
 function drawGraphs(){
     var mods = document.getElementById('graph').childNodes;    
