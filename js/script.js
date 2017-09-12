@@ -408,7 +408,7 @@ function Step2(){
                     $(this).removeClass('fel');
                     $(this).removeClass('gro');
                     $(this).addClass('mis');
-                    $(this).attr('fill','yellow');
+                    $(this).attr('fill','#f4dc42');
                     $(this).clone().appendTo('#graph4');        
                     m++;
     }
@@ -645,7 +645,7 @@ function Step6(){
                         $(this).removeClass('fel');
                         $(this).removeClass('gro');
                         $(this).addClass('mis');
-                        $(this).attr('fill','yellow');
+                        $(this).attr('fill','#f4dc42');
                         $(this).clone().appendTo('#graph4');        
                         m++;
         } 
