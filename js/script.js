@@ -22,12 +22,6 @@ var width,
     var s = 0;
     var t = 0;
 
-if ($(window).width() < 480 || $(window).height() < 480) {
-    widthSquares = 20;
-    heightSquares = 40;
-    
-}
-
 d3.csv("postdata2.csv", function(d) {
  return {
     id: d.Current_Case_Number,
@@ -111,20 +105,6 @@ function(error, rows) {
     d3.select('#exp').append("svg").attr("width", 'inherit').attr("height", 'inherit').append("g").attr("id","graph5b").selectAll("div");        
 
 });
-
-function countUp(name){
-    $(name).each(function () {
-    $(this).prop('Counter',0).animate({
-        Counter: $(this).text()
-    }, {
-        duration: 1500,
-        easing: 'swing',
-        step: function (now) {
-            $(this).text(Math.ceil(now));
-        }
-    });
-});
-}
 
 function countUpAlt(id,number){
     $(id).each(function() {
@@ -342,6 +322,10 @@ function Step2(){
     $('.counters').css('display','inherit');
     $("rect").not("#graph rect").remove();
     
+    countUpAlt('#felCnt',109);
+    countUpAlt('#groCnt',192);
+    countUpAlt('#misCnt',328);    
+    
     var mods = document.getElementById('graph').childNodes;   
     
     k = l = m = 0;
@@ -456,7 +440,6 @@ function Step2(){
     $('.pt').removeClass('active');
     $('#cir2').addClass('active');
     $('#text').text('Nearly half the cases started with felony or gross misdemeanor charges, which generally trigger a disciplinary review by the POST Board.');
-    countUp('.count');
     
     $("#felArrows").fadeTo( 500, 0.0 );
     
@@ -556,6 +539,10 @@ function Step5(){
     $("#groArrows").css('display','none');    
     $("#misArrows").fadeTo( 500, 1.0 );
     $("#disArrows").fadeTo( 500, 0.0 );
+    $('rect.fel').addClass('red');
+    $('rect.gro').addClass('orange');    
+    $('rect.mis').addClass('yellow');  
+    $('rect').removeClass('grayFill');
 
 
 }
@@ -565,6 +552,11 @@ function Step6(){
     countUpAlt('#expCnt',21);
     countUpAlt('#revCnt',111);
     countUpAlt('#susCnt',24);
+    countUpAlt('#disCnt',494);
+    
+    countUpAlt('#felCnt',27);
+    countUpAlt('#groCnt',158);
+    countUpAlt('#misCnt',310);
     
     $("#step2 rect").remove();
     $("#misArrows").css('display','none');
@@ -574,97 +566,183 @@ function Step6(){
     
     $(mods).each(function(i){
     var stat = d3.select(this).datum().started_out;
-    var lastOne = d3.select(this).datum().disipline_bucket;
-    switch(stat){
-                case "FELONY":
-                    $(this).attr("x",  function(d){
-                  row = (k%heightSquares);
-        if ($(window).width() < 480 || $(window).height() < 480) {
-            return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + mobileX )
-        }     
-          
-        return (((row*squareSize) + (row*gap)) + (heightSquares*squareSize)) - deskX
+    var final = d3.select(this).datum().disipline_bucket;
+        console.log(final);
+    if (final == "No discipline"){
+               switch(stat){
+                    case "FELONY":
+                        $(this).attr("x",  function(d){
+                      row = (k%heightSquares);
+            if ($(window).width() < 480 || $(window).height() < 480) {
+                return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + mobileX )
+            }     
 
-//          group n squares for column
-//          col = Math.floor(k/heightSquares);
-//          return (col*squareSize) + (col*gap);
-        });
-                    $(this).attr("y", function(d){
-          
-        col = Math.floor(k/heightSquares);
-          return (col*squareSize) + (col*gap);
-          
-      });
-                    $(this).addClass('fel');
-                    $(this).attr('fill','red');
-                    $(this).removeClass('gro');
-                    $(this).removeClass('mis');
-                    $(this).clone().appendTo('#graph2');                 
-                    k++;
-                    break;
-                case "GROSS MISDEMEANOR":
-                    $(this).attr("x",  function(d){
-                  row = (l%heightSquares);
-        if ($(window).width() < 480 || $(window).height() < 480) {
-            return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + mobileX )
-        }     
-          
-        return (((row*squareSize) + (row*gap)) + (heightSquares*squareSize)) - deskX
+            return (((row*squareSize) + (row*gap)) + (heightSquares*squareSize)) - deskX
 
-//          group n squares for column
-//          col = Math.floor(k/heightSquares);
-//          return (col*squareSize) + (col*gap);
-        });
-                    $(this).attr("y", function(d){
-          
-        col = Math.floor(l/heightSquares);
-          return (col*squareSize) + (col*gap);
-          
-      });
-                    $(this).removeClass('fel');
-                    $(this).removeClass('mis');
-                    $(this).addClass('gro');
-                    $(this).attr('fill','orange');
-                    $(this).clone().appendTo('#graph3');                        
-                    l++;
-                    break;
-                default:
-                    $(this).attr("x",  function(d){
-                  row = (m%heightSquares);
-        if ($(window).width() < 480 || $(window).height() < 480) {
-            return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + mobileX )
-        }     
-          
-        return (((row*squareSize) + (row*gap)) + (heightSquares*squareSize)) - deskX
+    //          group n squares for column
+    //          col = Math.floor(k/heightSquares);
+    //          return (col*squareSize) + (col*gap);
+            });
+                        $(this).attr("y", function(d){
 
-//          group n squares for column
-//          col = Math.floor(k/heightSquares);
-//          return (col*squareSize) + (col*gap);
-        });
-                    $(this).attr("y", function(d){
-          
-        col = Math.floor(m/heightSquares);
-          return (col*squareSize) + (col*gap);
-          
-      });
-                    $(this).removeClass('fel');
-                    $(this).removeClass('gro');
-                    $(this).addClass('mis');
-                    $(this).attr('fill','yellow');
-                    $(this).clone().appendTo('#graph4');        
-                    m++;
+            col = Math.floor(k/heightSquares);
+              return (col*squareSize) + (col*gap);
+
+          });
+                        $(this).addClass('fel');
+                        $(this).attr('fill','red');
+                        $(this).removeClass('gro');
+                        $(this).removeClass('mis');
+                        $(this).clone().appendTo('#graph2');                 
+                        k++;
+                        break;
+                    case "GROSS MISDEMEANOR":
+                        $(this).attr("x",  function(d){
+                      row = (l%heightSquares);
+            if ($(window).width() < 480 || $(window).height() < 480) {
+                return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + mobileX )
+            }     
+
+            return (((row*squareSize) + (row*gap)) + (heightSquares*squareSize)) - deskX
+
+    //          group n squares for column
+    //          col = Math.floor(k/heightSquares);
+    //          return (col*squareSize) + (col*gap);
+            });
+                        $(this).attr("y", function(d){
+
+            col = Math.floor(l/heightSquares);
+              return (col*squareSize) + (col*gap);
+
+          });
+                        $(this).removeClass('fel');
+                        $(this).removeClass('mis');
+                        $(this).addClass('gro');
+                        $(this).attr('fill','orange');
+                        $(this).clone().appendTo('#graph3');                        
+                        l++;
+                        break;
+                    default:
+                        $(this).attr("x",  function(d){
+                      row = (m%heightSquares);
+            if ($(window).width() < 480 || $(window).height() < 480) {
+                return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + mobileX )
+            }     
+
+            return (((row*squareSize) + (row*gap)) + (heightSquares*squareSize)) - deskX
+
+    //          group n squares for column
+    //          col = Math.floor(k/heightSquares);
+    //          return (col*squareSize) + (col*gap);
+            });
+                        $(this).attr("y", function(d){
+
+            col = Math.floor(m/heightSquares);
+              return (col*squareSize) + (col*gap);
+
+          });
+                        $(this).removeClass('fel');
+                        $(this).removeClass('gro');
+                        $(this).addClass('mis');
+                        $(this).attr('fill','yellow');
+                        $(this).clone().appendTo('#graph4');        
+                        m++;
+        } 
     }
-                    
+        else{
+                           switch(stat){
+                    case "FELONY":
+                        $(this).attr("x",  function(d){
+                      row = (k%heightSquares);
+            if ($(window).width() < 480 || $(window).height() < 480) {
+                return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + mobileX )
+            }     
+
+            return (((row*squareSize) + (row*gap)) + (heightSquares*squareSize)) - deskX
+
+    //          group n squares for column
+    //          col = Math.floor(k/heightSquares);
+    //          return (col*squareSize) + (col*gap);
+            });
+                        $(this).attr("y", function(d){
+
+            col = Math.floor(k/heightSquares);
+              return (col*squareSize) + (col*gap);
+
+          });
+                        $(this).addClass('fel');
+                        $(this).addClass('grayFill');
+                        $(this).removeClass('gro');
+                        $(this).removeClass('mis');
+                        $(this).clone().appendTo('#graph2');                 
+                        k++;
+                        break;
+                    case "GROSS MISDEMEANOR":
+                        $(this).attr("x",  function(d){
+                      row = (l%heightSquares);
+            if ($(window).width() < 480 || $(window).height() < 480) {
+                return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + mobileX )
+            }     
+
+            return (((row*squareSize) + (row*gap)) + (heightSquares*squareSize)) - deskX
+
+    //          group n squares for column
+    //          col = Math.floor(k/heightSquares);
+    //          return (col*squareSize) + (col*gap);
+            });
+                        $(this).attr("y", function(d){
+
+            col = Math.floor(l/heightSquares);
+              return (col*squareSize) + (col*gap);
+
+          });
+                        $(this).removeClass('fel');
+                        $(this).removeClass('mis');
+                        $(this).addClass('gro');
+                        $(this).addClass('grayFill');
+                        $(this).clone().appendTo('#graph3');                        
+                        l++;
+                        break;
+                    default:
+                        $(this).attr("x",  function(d){
+                      row = (m%heightSquares);
+            if ($(window).width() < 480 || $(window).height() < 480) {
+                return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + mobileX )
+            }     
+
+            return (((row*squareSize) + (row*gap)) + (heightSquares*squareSize)) - deskX
+
+    //          group n squares for column
+    //          col = Math.floor(k/heightSquares);
+    //          return (col*squareSize) + (col*gap);
+            });
+                        $(this).attr("y", function(d){
+
+            col = Math.floor(m/heightSquares);
+              return (col*squareSize) + (col*gap);
+
+          });
+                        $(this).removeClass('fel');
+                        $(this).removeClass('gro');
+                        $(this).addClass('mis');
+                        $(this).addClass('grayFill');
+                        $(this).clone().appendTo('#graph4');        
+                        m++;
+        } 
+
+        }
+
     });
     $('rect').not('#noDis rect').not('#mis1 rect').fadeTo( 500, .2 );
     $('#noDis rect').fadeTo( 500, 1.0 );
-    $('#noDis rect.fel').addClass('red');
-    $('#noDis rect.gro').addClass('orange');
+//    $('#noDis rect.fel').addClass('red');
+//    $('#noDis rect.gro').addClass('orange');
     $('#fel1 rect').fadeTo( 500, 1.0 );
     $('#fel1 > rect').removeClass('mis');
     $('#fel1 rect').removeClass('gro');
-    $('#fel1 rect').addClass('red');
-    $('#gro1 rect').addClass('orange');
+    $('#fel1 rect').removeClass('red');
+    $('#gro1 rect').removeClass('orange');    
+    $('#mis1 rect').removeClass('yellow');        
     $('#mis1 rect').fadeTo( 500, 1.0 );
     $('#gro1 rect').fadeTo( 500, 1.0 );
     $('.fel2Box').fadeTo( 500, 0 );
@@ -680,6 +758,7 @@ function Step6(){
     $('rect').not('#noDis rect').not('#mis1 rect').removeClass('yellow');
     $('.pt').removeClass('active');
     $('#cir6').addClass('active');
+    $('#step2 .grayFill').fadeTo( 500, .4 );
     $('#text').text('The net result is that nearly 3 in 4 criminal convictions results in no state discipline for the officer.');    
     $("#disArrows").fadeTo( 500, 1.0 );
 }
