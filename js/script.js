@@ -758,7 +758,7 @@ function Step6(){
     $('rect').not('#noDis rect').not('#mis1 rect').removeClass('yellow');
     $('.pt').removeClass('active');
     $('#cir6').addClass('active');
-    $('#step2 .grayFill').fadeTo( 500, .4 );
+    $('#step2 .grayFill').fadeTo( 500, .2 );
     $('#text').text('The net result is that nearly 3 in 4 criminal convictions results in no state discipline for the officer.');    
     $("#disArrows").fadeTo( 500, 1.0 );
 }
