@@ -448,7 +448,7 @@ function Step2(){
 
 function Step3(){
     
-    countUpAlt('#fel2Cnt',68);
+    countUpAlt('#fel2Cnt',67);
     countUpAlt('#mis2Cnt',17);
     countUpAlt('#gro2Cnt',25);
     countUpAlt('#disCnt',25);
@@ -553,10 +553,10 @@ function Step6(){
     countUpAlt('#expCnt',21);
     countUpAlt('#revCnt',111);
     countUpAlt('#susCnt',24);
-    countUpAlt('#disCnt',494);
+    countUpAlt('#disCnt',493);
     
-    countUpAlt('#felCnt',27);
-    countUpAlt('#groCnt',158);
+    countUpAlt('#felCnt',28);
+    countUpAlt('#groCnt',155);
     countUpAlt('#misCnt',310);
     
     $("#step2 rect").remove();
