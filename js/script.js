@@ -466,7 +466,6 @@ function Step3(){
         $(this).delay(i).fadeTo( 500, 1.0 );
     });
     
-    $('rect').not('.fel').fadeTo( 500, .2 );
     $('.fel').addClass('red');
     $('.fel').removeClass('mis');
     $('.fel').removeClass('gro');
@@ -482,6 +481,9 @@ function Step3(){
 //    $('.mis').removeClass('yellow'); 
     $('#cir3').addClass('active');
     $('#text').text('Because a felony conviction triggers automatic license revocation, officers often plead down to lesser charges as the cases move through the court system.');
+    $('rect.gro').fadeTo( 500, 0.0 );
+    $('rect.mis').fadeTo( 500, 0.0 );
+    
 }
 
 function Step4(){
@@ -498,7 +500,6 @@ function Step4(){
     $("rect.gro").each(function(i){
         $(this).delay(i).fadeTo( 500, 1.0 );
     });
-    $('rect').not('.gro').fadeTo( 500, .2 );
     $('.gro').removeClass('mis');
     $('.pt').removeClass('active');
     $('#cir4').addClass('active');    
@@ -507,6 +508,9 @@ function Step4(){
     $("#felArrows").fadeTo( 500, 0.0 );
     $("#misArrows").fadeTo( 500, 0.0 );
     $("#groArrows").fadeTo( 500, 1.0 );  
+    $('rect.mis').fadeTo( 500, 0.0 );
+    $('rect.fel').fadeTo( 500, 0.0 );
+    
     
 }
 
@@ -527,7 +531,6 @@ function Step5(){
     $('.fel2Box').fadeTo( 500, 1.0 );
     $('.mis2Box').fadeTo( 500, 1.0 );  
     $('.gro2Box').fadeTo( 500, 1.0 );    
-    $('rect').not('.mis').fadeTo( 500, .2 );
     $('rect').not('.mis').removeClass('yellow');
 //    $('.mis').addClass('yellow');
 //    $('.gro').removeClass('orange');
@@ -542,8 +545,10 @@ function Step5(){
     $("#disArrows").fadeTo( 500, 0.0 );
     $('rect.fel').addClass('red');
     $('rect.gro').addClass('orange');    
-    $('rect.mis').addClass('yellow');  
+    $('rect.mis').addClass('yellow'); 
     $('rect').removeClass('grayFill');
+    $('rect.gro').fadeTo( 500, 0.0 );
+    $('rect.fel').fadeTo( 500, 0.0 );    
 
 
 }
@@ -760,6 +765,10 @@ function Step6(){
     $('#step2 .grayFill').fadeTo( 500, .2 );
     $('#text').text('The net result is that nearly 3 in 4 criminal convictions results in no state discipline for the officer.');    
     $("#disArrows").fadeTo( 500, 1.0 );
+    $('#noDis rect').remove();
+    redrawNoDis();
+    
+    
 }
 
 //$('#cir3').click(function() {
@@ -1023,13 +1032,14 @@ function drawGraphs(){
 }
 
 function DrawEm (crimeType,num1,num2,num3,num4,num5,num6,num7){
-    n = num1;
-    o = num2;
-    p = num3;
-    q = num4;
-    r = num5;
-    s = num6;
-    t = num7;
+//    n = num1;
+//    o = num2;
+//    p = num3;
+//    q = num4;
+//    r = num5;
+//    s = num6;
+//    t = num7;
+    n = o = p = q = r = s = t = 0;
     var mods = document.getElementById('graph').childNodes;
     $(mods).each(function(i){
         var started = d3.select(this).datum().started_out;
@@ -1201,11 +1211,46 @@ function DrawEm (crimeType,num1,num2,num3,num4,num5,num6,num7){
         }
         
 });
-    console.log(n);
-    console.log(o);
-    console.log(p);
-    console.log(q);
-    console.log(r);
-    console.log(s);
-    console.log(t);
+}
+
+function redrawNoDis(){
+    var mods = document.getElementById('graph').childNodes;
+    
+    q = 0;
+    
+    $(mods).each(function(i){
+        var displine = d3.select(this).datum().disipline_bucket;
+            if(displine == "No discipline"){
+                    $(this).attr("x",  function(d){
+                  row = (q%heightSquares);
+        if ($(window).width() < 480 || $(window).height() < 480) {
+            return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + mobileX )
+        }     
+          
+        return (((row*squareSize) + (row*gap)) + (heightSquares*squareSize)) - deskX
+
+//          group n squares for column
+//          col = Math.floor(k/heightSquares);
+//          return (col*squareSize) + (col*gap);
+        });
+                    $(this).attr("y", function(d){
+          
+        col = Math.floor(q/heightSquares);
+          return (col*squareSize) + (col*gap);
+          
+      });
+                    $(this).clone().appendTo('#graph4b');
+                    q++;
+            }
+            else    {
+                
+            }
+
+    });   
+    
+    $('#noDis rect').fadeTo( 500, 0.0 );
+    
+    $("#noDis rect").each(function(i){
+        $(this).delay(i).fadeTo( 500, 1.0 );
+    });
 }
