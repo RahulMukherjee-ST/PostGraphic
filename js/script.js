@@ -2,7 +2,7 @@
 
 var width,
     height,
-    widthSquares = 40,
+    widthSquares = 45,
     introheightSquares = 40,
     heightSquares = 33,
     squareSize = 6,
