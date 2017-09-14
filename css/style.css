@@ -7,6 +7,10 @@
     z-index: -10;
 }
 
+#gro1Lbl    {
+    width: 105%;
+}
+
 #felArrows  {
     width: 291px;
     top: 136px;
@@ -57,6 +61,19 @@
     opacity: 0;
 }
 
+/*
+.fltright   {
+    float: right;
+}
+*/
+
+label   {
+    font-weight: 400 !important;
+    font-size: 11px;
+/*    margin-bottom: 0 !important;*/
+/*    letter-spacing: -1px;    */
+}
+
 .lbl    {
     font-size: 14px;
     margin-bottom: -7px;
@@ -79,7 +96,7 @@
 }
 
 i.active {
-    color: red;
+    color: #222;
 }
 
 .pt {
@@ -207,6 +224,10 @@ div > p {
 
 .box#revSur {
     height: 50px;
+}
+
+.box#susPro {
+    height: 75px;
 }
 
 .box#noDis {

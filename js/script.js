@@ -379,6 +379,13 @@ function Step2(){
     $('.counters').css('display','inherit');
     $("rect").not("#graph rect").remove();
     
+    $('#fel1Lbl').html('Felony: <span class="count" id="felCnt">0</span> <span class="count fltright">Charges</span>');
+    $('#gro1Lbl').html('Gross Misdemeanor: <span class="count" id="groCnt">0</span> Charges');
+    $('#mis1Lbl').html('Misdemeanor: <span class="count" id="misCnt">0</span> Charges');
+    
+    $('#gro1Lbl').fadeTo( 500, 1.0 );
+    $('#mis1Lbl').fadeTo( 500, 1.0 );
+    
     countUpAlt('#felCnt',109);
     countUpAlt('#groCnt',192);
     countUpAlt('#misCnt',328);    
@@ -496,13 +503,24 @@ function Step2(){
     
     $('.pt').removeClass('active');
     $('#cir2').addClass('active');
-    $('#text').text('Nearly half the cases started with felony or gross misdemeanor charges, which generally trigger a disciplinary review by the POST Board.');
+    $('#text').html('<b>Nearly half the cases</b> started out as felonies or gross misdemeanors, criminal offenses that can end an officer’s career in Minnesota.');
     
     $("#felArrows").fadeTo( 500, 0.0 );
     
 }
 
 function Step3(){
+    
+    $('#fel2Lbl').html('Of those, <span class="count" id="fel2Cnt">0</span> remained felonies');
+    $('#mis2Lbl').html('Of those, <span class="count" id="mis2Cnt">0</span> reduced to gross misdemeanors');
+    $('#gro2Lbl').html('Of those, <span class="count" id="gro2Cnt">0</span> reduced to misdemeanors');    
+    $('#disLbl').html('Of those, <span class="count" id="disCnt">0</span> received no discipline'); 
+    
+    $('#gro1Lbl').fadeTo( 500, 0.0 );
+    $('#mis1Lbl').fadeTo( 500, 0.0 );
+    $('#gro2Lbl').fadeTo( 500, 1.0 );
+    $('#fel2Lbl').fadeTo( 500, 1.0 );
+    $('#fel1Lbl').fadeTo( 500, 1.0 );
     
     countUpAlt('#fel2Cnt',67);
     countUpAlt('#mis2Cnt',17);
@@ -536,7 +554,7 @@ function Step3(){
 //    $('.gro').removeClass('orange');    
 //    $('.mis').removeClass('yellow'); 
     $('#cir3').addClass('active');
-    $('#text').text('Because a felony conviction triggers automatic license revocation, officers often plead down to lesser charges as the cases move through the court system.');
+    $('#text').html('<b>Felony convictions</b> trigger mandatory revocation of an officer’s license, but many of the charges were bargained down as they move through the court system.');
     $('rect.gro').fadeTo( 500, 0.0 );
     $('rect.mis').fadeTo( 500, 0.0 );
     
@@ -544,6 +562,19 @@ function Step3(){
 
 function Step4(){
     
+    $('#gro1Lbl').fadeTo( 500, 1.0 );
+    $('#gro2Lbl').fadeTo( 500, 1.0 );
+    
+    $('#gro1Lbl').html('Gross Misdemeanor: <span class="count" id="groCnt">0</span> Charges');
+    
+    $('#mis2Lbl').html('Of those, <span class="count" id="mis2Cnt">0</span> remained gross misdemeanors');
+    $('#gro2Lbl').html('Of those, <span class="count" id="gro2Cnt">0</span> reduced to misdemeanors');     
+    
+    $('#fel1Lbl').fadeTo( 500, 0.0 );
+    $('#fel2Lbl').fadeTo( 500, 0.0 );
+    $('#mis1Lbl').fadeTo( 500, 0.0 );
+
+    countUpAlt('#groCnt',192);
     countUpAlt('#mis2Cnt',94);
     countUpAlt('#gro2Cnt',98);
     countUpAlt('#disCnt',158);
@@ -559,7 +590,7 @@ function Step4(){
     $('.gro').removeClass('mis');
     $('.pt').removeClass('active');
     $('#cir4').addClass('active');    
-    $('#text').text('Gross misdemeanors, too, are often reduced to misdemeanors by the time an officer is sentenced, which rarely result in POST Board discipline.');
+    $('#text').html('<b>Gross misdemeanors</b> trigger a POST Board review, but about half were reduced to misdemeanors and resulted in no state discipline.');
     
     $("#felArrows").fadeTo( 500, 0.0 );
     $("#misArrows").fadeTo( 500, 0.0 );
@@ -570,8 +601,24 @@ function Step4(){
     
 }
 
-function Step5(){
+function Step5(){    
     
+        $("#graph4a rect").remove();
+    $("#graph4b rect").remove();
+    
+    $('#mis1Lbl').html('Misdemeanor: <span class="count" id="misCnt">0</span> Charges');
+    $('#fel1Lbl').fadeTo( 500, 0.0 );
+    
+    
+    $('#gro1Lbl').fadeTo( 500, 0.0 );
+    $('#mis1Lbl').fadeTo( 500, 1.0 );
+    $('#gro2Lbl').fadeTo( 500, 0.0 );
+    
+    
+    $('#disLbl').html('Of those, <span class="count" id="disCnt">0</span> received no discipline');
+    $('#mis2Lbl').html('Of those, <span class="count" id="mis2Cnt">0</span> received no discipline');
+    
+    countUpAlt('#misCnt',328);
     countUpAlt('#mis2Cnt',328);
     countUpAlt('#disCnt',310);
     
@@ -595,7 +642,7 @@ function Step5(){
     $('.ExpBox').css( 'opacity', '0' );
     $('.RevBox').css( 'opacity', '0' ); 
     $('.SusBox').css( 'opacity', '0' );        
-    $('#text').text('Misdemeanor convictions almost never result in discipline by the POST Board.');    
+    $('#text').html('Roughly half the cases started as <b>misdemeanors</b>, and the POST Board rarely issues discipline for such offenses.');    
     $("#groArrows").css('display','none');    
     $("#misArrows").fadeTo( 500, 1.0 );
     $("#disArrows").fadeTo( 500, 0.0 );
@@ -610,6 +657,17 @@ function Step5(){
 }
 
 function Step6(){
+    
+    
+    $('#gro1Lbl').fadeTo( 500, 1.0 );
+    $('#fel1Lbl').fadeTo( 500, 1.0 );
+
+    
+    $('#fel1Lbl').html('Felony: <span class="count" id="felCnt">0</span> <span class="count fltright">receive no discipline</span>');
+    $('#gro1Lbl').html('<span class="count" id="groCnt">0</span> Gross Misdemeanors receive no discipline');
+    $('#mis1Lbl').html('<span class="count" id="misCnt">0</span> Misdemeanors receive no discipline');    
+    
+    $('#disLbl').html('<span class="count" id="disCnt">0</span> received no discipline');
     
     countUpAlt('#expCnt',21);
     countUpAlt('#revCnt',111);
@@ -649,7 +707,7 @@ function Step6(){
     $('.pt').removeClass('active');
     $('#cir6').addClass('active');
     $('#step2 .grayFill').fadeTo( 500, .2 );
-    $('#text').text('The net result is that nearly 3 in 4 criminal convictions results in no state discipline for the officer.');    
+    $('#text').html('The net result is that about <b> 3 in 4 convictions </b> resulted in no state discipline, including felonies and gross misdemeanors that were reduced and licenses that lapsed without board action.');    
     $("#disArrows").fadeTo( 500, 1.0 );
     $('#noDis rect').remove();
     redrawNoDis();
@@ -1191,9 +1249,21 @@ function redrawNoDis(){
     
     $('#noDis rect').fadeTo( 500, 0.0 );
     
-    $("#noDis rect").each(function(i){
+    $("#noDis rect.fel").each(function(i){
         $(this).delay(i).fadeTo( 500, 1.0 );
     });
+    
+    $("#noDis rect.mis").each(function(i){
+        $(this).delay(xx).fadeTo( 500, 1.0 );
+        xx++;
+    });
+    
+    $("#noDis rect.gro").each(function(i){
+        $(this).delay(zz).fadeTo( 500, 1.0 );
+        zz++;
+    });
+    
+    
 }
 
 function redrawInitials() {
