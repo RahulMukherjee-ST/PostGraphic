@@ -114,6 +114,7 @@ i.active {
 
 .grayFill   {
     fill: gray;
+    opacity: 0.2;
 }
 
 #introButton    {
