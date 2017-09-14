@@ -417,7 +417,7 @@ function Step2(){
           
       });
                     $(this).addClass('fel');
-                    $(this).attr('fill','red');
+                    $(this).attr('fill','#c1262d');
                     $(this).removeClass('gro');
                     $(this).removeClass('mis');
                     $(this).clone().appendTo('#graph2');                 
@@ -445,7 +445,7 @@ function Step2(){
                     $(this).removeClass('fel');
                     $(this).removeClass('mis');
                     $(this).addClass('gro');
-                    $(this).attr('fill','orange');
+                    $(this).attr('fill','#f7931e');
                     $(this).clone().appendTo('#graph3');                        
                     l++;
                     break;
@@ -471,7 +471,7 @@ function Step2(){
                     $(this).removeClass('fel');
                     $(this).removeClass('gro');
                     $(this).addClass('mis');
-                    $(this).attr('fill','#f4dc42');
+                    $(this).attr('fill','#ffd193');
                     $(this).clone().appendTo('#graph4');        
                     m++;
     }
@@ -1303,7 +1303,7 @@ function redrawInitials() {
 
           });
                         $(this).addClass('fel');
-                        $(this).attr('fill','red');
+                        $(this).attr('fill','#c1262d');
                         $(this).removeClass('gro');
                         $(this).removeClass('mis');
                         $(this).clone().appendTo('#graph2');  
@@ -1332,7 +1332,7 @@ function redrawInitials() {
                         $(this).removeClass('fel');
                         $(this).removeClass('mis');
                         $(this).addClass('gro');
-                        $(this).attr('fill','orange');
+                        $(this).attr('fill','#f7931e');
                         $(this).clone().appendTo('#graph3');  
                        $(this).delay(l*3).fadeIn(100);
                         l++;
@@ -1359,7 +1359,7 @@ function redrawInitials() {
                         $(this).removeClass('fel');
                         $(this).removeClass('gro');
                         $(this).addClass('mis');
-                        $(this).attr('fill','#f4dc42');
+                        $(this).attr('fill','#ffd193');
                         $(this).clone().appendTo('#graph4');  
                        $(this).delay(m*3).fadeIn(100);
                         m++;

@@ -7,20 +7,25 @@
     z-index: -10;
 }
 
+.headlbl    {
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
 #gro1Lbl    {
     width: 105%;
 }
 
 #felArrows  {
     width: 291px;
-    top: 136px;
+    top: 175px;
     left: 329px;
     display: none;
 }
 
 #groArrows  {
     width: 291px;
-    top: 236px;
+    top: 272px;
     left: 330px;
     height: 218px;    
     display: none;
@@ -28,7 +33,7 @@
 
 #misArrows  {
     width: 291px;
-    top: 315px;
+    top: 358px;
     left: 329px;
     height: 218px;    
     display: none;
@@ -36,7 +41,7 @@
 
 #disArrows  {
     width: 284px;
-    top: 140px;
+    top: 180px;
     left: 332px;
     height: 218px;    
     display: none;
@@ -118,15 +123,15 @@ i.active {
 }
 
 .red {
-    fill: red;
+    fill: #c1262d;
 }
 
 .orange {
-    fill: orange;
+    fill: #f7931e;
 }
 
 .yellow {
-    fill: #f4dc42;
+    fill: #ffd193;
 }
 
 .grayFill   {
