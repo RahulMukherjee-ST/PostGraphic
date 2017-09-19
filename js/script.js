@@ -3,7 +3,6 @@
 var width,
     height,
     widthSquares = 45,
-    introheightSquares = 40,
     heightSquares = 33,
     squareSize = 6,
     gap = 1;
@@ -370,6 +369,8 @@ function Step1(){
                     $(this).css('opacity','0.2');
                 }
         });    
+    
+    $('.clicker').css('opacity','0.0');
 
 };
 
