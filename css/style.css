@@ -29,16 +29,16 @@
 }
 
 #felArrows  {
-    width: 472px;
+    width: 461px;
     top: 185px;
-    left: 236px;
+    left: 240px;
     display: none;
 }
 
 #groArrows  {
-    width: 475px;
+    width: 458px;
     top: 278px;
-    left: 235px;
+    left: 243px;
     display: none;
 }
 
@@ -51,9 +51,9 @@
 }
 
 #disArrows  {
-    width: 540px;
-    top: 187px;
-    left: 171px;
+    width: 462.5px;
+    top: 188px;
+    left: 238px;
     display: none;
 }
 

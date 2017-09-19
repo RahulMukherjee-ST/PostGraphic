@@ -390,7 +390,7 @@ function Step2(){
     countUpAlt('#felCnt',109);
     countUpAlt('#groCnt',192);
     countUpAlt('#misCnt',328);    
-    
+        
     var mods = document.getElementById('graph').childNodes;   
     
     k = l = m = 0;
