@@ -73,7 +73,7 @@ function(error, rows) {
     
         var mods = document.getElementById('graph').childNodes;
     
-        var NoDisNum = 493; //473 for old
+        var NoDisNum = 494; //473 for old
     
         var e = 0;
         $(mods).each(function(i){
@@ -299,13 +299,13 @@ $("body").keydown(function(e) {
 
 function Step1(){
     var mods = document.getElementById('graph').childNodes;
-        var NoDisNum = 493; //493 or 473 with old spreadsheet
+        var NoDisNum = 494; //493 or 473 with old spreadsheet
     
         var e = 0;
         $(mods).each(function(i){
-                var dis = d3.select(this).datum().disipline_bucket; 
-                console.log(dis);
-                if(dis == "No discipline")
+                var dis2 = d3.select(this).datum().disipline_bucket; 
+                console.log(dis2);
+                if(dis2 == "No discipline" || dis2 == "No discipline/Expired before sentencing")
                 {
                     $(this).css('opacity','1');
                     $(this).attr("x", function(d, i){
@@ -361,7 +361,7 @@ function Step1(){
         $(mods).each(function(i){
                 var dis = d3.select(this).datum().disipline_bucket; 
                 console.log(dis);
-                if(dis == "No discipline")
+                if(dis == "No discipline" || dis2 == "No discipline/Expired before sentencing")
                 {
                     $(this).css('opacity','1');
                 }
