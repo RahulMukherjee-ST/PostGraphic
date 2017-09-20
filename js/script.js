@@ -650,9 +650,9 @@ function Step6(){
     $('#fel1Lbl').fadeTo( 500, 1.0 );
 
     
-    $('#fel1Lbl').html('Felony: <span class="count" id="felCnt">0</span> <span class="count fltright">receive no discipline</span>');
-    $('#gro1Lbl').html('Gross Misdemeanors: <span class="count" id="groCnt">0</span> receive no discipline');
-    $('#mis1Lbl').html('Misdemeanors: <span class="count" id="misCnt">0</span> receive no discipline');    
+    $('#fel1Lbl').html('Felony: <span class="count" id="felCnt">0</span> <span class="count fltright">received no discipline</span>');
+    $('#gro1Lbl').html('Gross Misdemeanors: <span class="count" id="groCnt">0</span> received no discipline');
+    $('#mis1Lbl').html('Misdemeanors: <span class="count" id="misCnt">0</span> received no discipline');    
     
     $('#disLbl').html('<span class="count" id="disCnt">0</span> received no discipline');
     
