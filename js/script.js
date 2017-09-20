@@ -22,7 +22,7 @@ var width,
     var s = 0;
     var t = 0;
 
-d3.csv("postdata2.csv", function(d) {
+d3.csv("postdata3.csv", function(d) {
  return {
     id: d.Current_Case_Number,
     pNum: d.POSTnumber,
@@ -73,13 +73,13 @@ function(error, rows) {
     
         var mods = document.getElementById('graph').childNodes;
     
-        var NoDisNum = 473; //493
+        var NoDisNum = 493; //473 for old
     
         var e = 0;
         $(mods).each(function(i){
                 var dis = d3.select(this).datum().disipline_bucket; 
                 console.log(dis);
-                if(dis == "No discipline")
+                if(dis == "No discipline" || dis == "No discipline/Expired before sentencing")
                 {
                     $(this).css('opacity','1');
                     $(this).attr("x", function(d, i){
@@ -299,7 +299,7 @@ $("body").keydown(function(e) {
 
 function Step1(){
     var mods = document.getElementById('graph').childNodes;
-        var NoDisNum = 473; //493
+        var NoDisNum = 493; //493 or 473 with old spreadsheet
     
         var e = 0;
         $(mods).each(function(i){
@@ -512,9 +512,10 @@ function Step2(){
 
 function Step3(){
     
+    $('#fel1Lbl').html('Felony: <span class="count" id="felCnt">0</span> <span class="count">Charges</span>');    
     $('#fel2Lbl').html('Of those, <span class="count" id="fel2Cnt">0</span> remained felonies');
-    $('#mis2Lbl').html('Of those, <span class="count" id="mis2Cnt">0</span> reduced to gross misdemeanors');
-    $('#gro2Lbl').html('Of those, <span class="count" id="gro2Cnt">0</span> reduced to misdemeanors');    
+    $('#gro2Lbl').html('<span class="count" id="mis2Cnt">0</span> reduced to gross misdemeanors');
+    $('#mis2Lbl').html('<span class="count" id="gro2Cnt">0</span> reduced to misdemeanors');    
     $('#disLbl').html('Of those, <span class="count" id="disCnt">0</span> received no discipline'); 
     
     $('#gro1Lbl').fadeTo( 500, 0.0 );
@@ -524,9 +525,10 @@ function Step3(){
     $('#fel1Lbl').fadeTo( 500, 1.0 );
     
     countUpAlt('#fel2Cnt',67);
+    countUpAlt('#felCnt',109);
     countUpAlt('#mis2Cnt',17);
     countUpAlt('#gro2Cnt',25);
-    countUpAlt('#disCnt',25);
+    countUpAlt('#disCnt',28);
     
     $("rect.fel").not("#graph rect").not("#graph2 rect").remove();
     
@@ -555,7 +557,7 @@ function Step3(){
 //    $('.gro').removeClass('orange');    
 //    $('.mis').removeClass('yellow'); 
     $('#cir3').addClass('active');
-    $('#text').html('<b>Felony convictions</b> trigger mandatory revocation of an officer’s license, but many of the charges were bargained down as they move through the court system.');
+    $('#text').html('<b>Felony convictions</b> trigger mandatory revocation of an officer’s license, but many of the charges were bargained down as they moved through the court system.');
     $('rect.gro').fadeTo( 500, 0.0 );
     $('rect.mis').fadeTo( 500, 0.0 );
     
@@ -566,10 +568,10 @@ function Step4(){
     $('#gro1Lbl').fadeTo( 500, 1.0 );
     $('#gro2Lbl').fadeTo( 500, 1.0 );
     
-    $('#gro1Lbl').html('Gross Misdemeanor: <span class="count" id="groCnt">0</span> Charges');
+    $('#gro1Lbl').html('<span class="count" id="groCnt">0</span> gross misdemeanors');
     
-    $('#mis2Lbl').html('Of those, <span class="count" id="mis2Cnt">0</span> remained gross misdemeanors');
-    $('#gro2Lbl').html('Of those, <span class="count" id="gro2Cnt">0</span> reduced to misdemeanors');     
+    $('#gro2Lbl').html('Of those, <span class="count" id="mis2Cnt">0</span> remained gross misdemeanors');
+    $('#mis2Lbl').html('<span class="count" id="gro2Cnt">0</span> reduced to misdemeanors');     
     
     $('#fel1Lbl').fadeTo( 500, 0.0 );
     $('#fel2Lbl').fadeTo( 500, 0.0 );
@@ -578,7 +580,7 @@ function Step4(){
     countUpAlt('#groCnt',192);
     countUpAlt('#mis2Cnt',94);
     countUpAlt('#gro2Cnt',98);
-    countUpAlt('#disCnt',158);
+    countUpAlt('#disCnt',155);
 
     $("rect.gro").not("#graph3 rect").css('opacity','0.0');
     
@@ -607,7 +609,7 @@ function Step5(){
         $("#graph4a rect").remove();
     $("#graph4b rect").remove();
     
-    $('#mis1Lbl').html('Misdemeanor: <span class="count" id="misCnt">0</span> Charges');
+    $('#mis1Lbl').html('<span class="count" id="misCnt">0</span> Misdemeanors');
     $('#fel1Lbl').fadeTo( 500, 0.0 );
     
     
@@ -616,11 +618,11 @@ function Step5(){
     $('#gro2Lbl').fadeTo( 500, 0.0 );
     
     
+    $('#mis2Lbl').html('All <span class="count" id="gro2Cnt">0</span> remained misdemeanors');
     $('#disLbl').html('Of those, <span class="count" id="disCnt">0</span> received no discipline');
-    $('#mis2Lbl').html('Of those, <span class="count" id="mis2Cnt">0</span> received no discipline');
     
     countUpAlt('#misCnt',328);
-    countUpAlt('#mis2Cnt',328);
+    countUpAlt('#gro2Cnt',328);
     countUpAlt('#disCnt',310);
     
     $("rect.mis").not("#graph rect").not("#graph4 rect").remove();    
@@ -665,8 +667,8 @@ function Step6(){
 
     
     $('#fel1Lbl').html('Felony: <span class="count" id="felCnt">0</span> <span class="count fltright">receive no discipline</span>');
-    $('#gro1Lbl').html('<span class="count" id="groCnt">0</span> Gross Misdemeanors receive no discipline');
-    $('#mis1Lbl').html('<span class="count" id="misCnt">0</span> Misdemeanors receive no discipline');    
+    $('#gro1Lbl').html('Gross Misdemeanors: <span class="count" id="groCnt">0</span> receive no discipline');
+    $('#mis1Lbl').html('Misdemeanors: <span class="count" id="misCnt">0</span> receive no discipline');    
     
     $('#disLbl').html('<span class="count" id="disCnt">0</span> received no discipline');
     
@@ -1133,7 +1135,7 @@ function DrawEm (crimeType,num1,num2,num3,num4,num5,num6,num7){
                     break;
                 default:
                     $(this).attr("x",  function(d){
-                  row = (t%heightSquares);
+                  row = (q%heightSquares);
         if ($(window).width() < 480 || $(window).height() < 480) {
             return ((heightSquares*squareSize) - ((row*squareSize) + (row*gap)) + mobileX )
         }                      
@@ -1146,12 +1148,12 @@ function DrawEm (crimeType,num1,num2,num3,num4,num5,num6,num7){
         });
                     $(this).attr("y", function(d){
           
-        col = Math.floor(t/heightSquares);
+        col = Math.floor(q/heightSquares);
           return (col*squareSize) + (col*gap);
           
       });
-                    $(this).clone().appendTo('#graph5b'); 
-                    t++;
+                    $(this).clone().appendTo('#graph4b'); 
+                    q++;
                     break;
     }
         }
@@ -1270,9 +1272,9 @@ function redrawNoDis(){
 function redrawInitials() {
         var mods = document.getElementById('graph').childNodes;   
     
-    felNum = 24;
-    groNum = 147;
-    misNum = 302;
+    felNum = 28;
+    groNum = 155;
+    misNum = 310;
     
     k = l = m = 0;
     
@@ -1282,7 +1284,7 @@ function redrawInitials() {
     var stat = d3.select(this).datum().started_out;
     var final = d3.select(this).datum().disipline_bucket;
         console.log(final);
-    if (final == "No discipline"){
+    if (final == "No discipline" || final == "No discipline/Expired before sentencing"){
                switch(stat){
                     case "FELONY":
                         $(this).attr("x",  function(d){
