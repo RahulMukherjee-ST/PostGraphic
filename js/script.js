@@ -303,6 +303,7 @@ function Step1(){
     
         var e = 0;
         $(mods).each(function(i){
+            $(this).removeClass('grayFill');
                 var dis2 = d3.select(this).datum().disipline_bucket; 
                 console.log(dis2);
                 if(dis2 == "No discipline" || dis2 == "No discipline/Expired before sentencing")
@@ -354,21 +355,6 @@ function Step1(){
     $('rect').addClass('grayFill');
     $('.pt').removeClass('active');
     $('#cir1').addClass('active');
-    
-        var mods = document.getElementById('graph').childNodes;
-    
-    
-        $(mods).each(function(i){
-                var dis = d3.select(this).datum().disipline_bucket; 
-                console.log(dis);
-                if(dis == "No discipline" || dis2 == "No discipline/Expired before sentencing")
-                {
-                    $(this).css('opacity','1');
-                }
-                else    {
-                    $(this).css('opacity','0.2');
-                }
-        });    
     
     $('.clicker').css('opacity','0.0');
 
