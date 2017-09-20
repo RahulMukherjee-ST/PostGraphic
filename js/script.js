@@ -562,8 +562,8 @@ function Step4(){
     $('#mis1Lbl').fadeTo( 500, 0.0 );
 
     countUpAlt('#groCnt',192);
-    countUpAlt('#mis2Cnt',94);
-    countUpAlt('#gro2Cnt',98);
+    countUpAlt('#mis2Cnt',98);
+    countUpAlt('#gro2Cnt',94);
     countUpAlt('#disCnt',155);
 
     $("rect.gro").not("#graph3 rect").css('opacity','0.0');
