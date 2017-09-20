@@ -78,7 +78,6 @@ function(error, rows) {
         var e = 0;
         $(mods).each(function(i){
                 var dis = d3.select(this).datum().disipline_bucket; 
-                console.log(dis);
                 if(dis == "No discipline" || dis == "No discipline/Expired before sentencing")
                 {
                     $(this).css('opacity','1');
@@ -305,7 +304,6 @@ function Step1(){
         $(mods).each(function(i){
             $(this).removeClass('grayFill');
                 var dis2 = d3.select(this).datum().disipline_bucket; 
-                console.log(dis2);
                 if(dis2 == "No discipline" || dis2 == "No discipline/Expired before sentencing")
                 {
                     $(this).css('opacity','1');
@@ -1152,15 +1150,15 @@ function redrawNoDis(){
     
     q = 0;
     
-    zz = 24; //28 actually
+    zz = 28; //28 actually
     
-    xx = 171;//183 actually
+    xx = 183;//183 actually
     
     
     $(mods).each(function(i){
         var started = d3.select(this).datum().started_out;
         var displine = d3.select(this).datum().disipline_bucket;
-            if(displine == "No discipline"){
+            if(displine == "No discipline" || displine == "No discipline/Expired before sentencing"){
                 switch(started){
                     case "FELONY":
                         $(this).attr("x",  function(d){
@@ -1269,7 +1267,6 @@ function redrawInitials() {
     $(mods).each(function(i){
     var stat = d3.select(this).datum().started_out;
     var final = d3.select(this).datum().disipline_bucket;
-        console.log(final);
     if (final == "No discipline" || final == "No discipline/Expired before sentencing"){
                switch(stat){
                     case "FELONY":
