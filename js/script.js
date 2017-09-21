@@ -365,7 +365,7 @@ function Step2(){
     $("rect").not("#graph rect").remove();
     
     $('#fel1Lbl').html('Felony: <span class="count" id="felCnt">0</span> <span class="count fltright">Charges</span>');
-    $('#gro1Lbl').html('Gross Misdemeanor: <span class="count" id="groCnt">0</span> Charges');
+    $('#gro1Lbl').html('Gross misdemeanor: <span class="count" id="groCnt">0</span> Charges');
     $('#mis1Lbl').html('Misdemeanor: <span class="count" id="misCnt">0</span> Charges');
     
     $('#gro1Lbl').fadeTo( 500, 1.0 );
@@ -496,7 +496,7 @@ function Step2(){
 
 function Step3(){
     
-    $('#fel1Lbl').html('Felony: <span class="count" id="felCnt">0</span> <span class="count">Charges</span>');    
+    $('#fel1Lbl').html('<span class="count" id="felCnt">0</span> <span class="count">Felonies</span>');    
     $('#fel2Lbl').html('Of those, <span class="count" id="fel2Cnt">0</span> remained felonies');
     $('#gro2Lbl').html('<span class="count" id="mis2Cnt">0</span> reduced to gross misdemeanors');
     $('#mis2Lbl').html('<span class="count" id="gro2Cnt">0</span> reduced to misdemeanors');    
@@ -593,7 +593,7 @@ function Step5(){
         $("#graph4a rect").remove();
     $("#graph4b rect").remove();
     
-    $('#mis1Lbl').html('<span class="count" id="misCnt">0</span> Misdemeanors');
+    $('#mis1Lbl').html('<span class="count" id="misCnt">0</span> misdemeanors');
     $('#fel1Lbl').fadeTo( 500, 0.0 );
     
     
@@ -651,8 +651,8 @@ function Step6(){
 
     
     $('#fel1Lbl').html('Felony: <span class="count" id="felCnt">0</span> <span class="count fltright">received no discipline</span>');
-    $('#gro1Lbl').html('Gross Misdemeanors: <span class="count" id="groCnt">0</span> received no discipline');
-    $('#mis1Lbl').html('Misdemeanors: <span class="count" id="misCnt">0</span> received no discipline');    
+    $('#gro1Lbl').html('Gross misdemeanor: <span class="count" id="groCnt">0</span> received no discipline');
+    $('#mis1Lbl').html('Misdemeanor: <span class="count" id="misCnt">0</span> received no discipline');    
     
     $('#disLbl').html('<span class="count" id="disCnt">0</span> received no discipline');
     
