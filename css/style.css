@@ -164,8 +164,8 @@ i.active {
 }
 
 #intro, #intro > svg    {
-    height: 170px;
-    margin-left:  19%;
+    height: 255px;
+    margin-left:  7%;
 }
 
 .introTitle {

@@ -6,9 +6,9 @@ var width,
     heightSquares = 33,
     altheight = 45,
     squareSize = 6,
-    altsquaresize = 10,
+    altsquaresize = 17,
     gap = 1;
-    var altX = 450;
+    var altX = 765;
     var deskX = 198;
 
     var k = 0;
@@ -637,7 +637,7 @@ function Step5(){
     $('.ExpBox').css( 'opacity', '0' );
     $('.RevBox').css( 'opacity', '0' ); 
     $('.SusBox').css( 'opacity', '0' );        
-    $('#text').html('Roughly half the cases started as <b>misdemeanors</b>, and the POST Board rarely issues discipline for such offenses.');    
+    $('#text').html('Roughly half the cases started as <b>misdemeanors</b>,<br> and the POST Board rarely issues discipline for such offenses.');    
     $("#groArrows").css('display','none');    
     $("#misArrows").fadeTo( 500, 1.0 );
     $("#disArrows").fadeTo( 500, 0.0 );
