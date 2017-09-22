@@ -137,9 +137,8 @@ i.active {
 }
 
 .intoLede   {
-    width: 50% !important;
-    margin-left: 25% !important;
-    margin-bottom: 15px !important;
+    font-size: 18px;
+    line-height: 21px;
 }
 
 .red {
@@ -164,7 +163,7 @@ i.active {
 }
 
 #intro, #intro > svg    {
-    height: 255px;
+    height: 270px;
     margin-left:  7%;
 }
 
