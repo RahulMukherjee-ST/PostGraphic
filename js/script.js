@@ -372,9 +372,9 @@ function Step2(){
     $('.counters').css('display','inherit');
     $("rect").not("#graph rect").remove();
     
-    $('#fel1Lbl').html('Felony: <span class="count" id="felCnt">0</span> <span class="count fltright">Cases</span>');
-    $('#gro1Lbl').html('Gross misdemeanor: <span class="count" id="groCnt">0</span> Cases');
-    $('#mis1Lbl').html('Misdemeanor: <span class="count" id="misCnt">0</span> Cases');
+    $('#fel1Lbl').html('Felony: <span class="count" id="felCnt">0</span> <span class="count fltright">felonies</span>');
+    $('#gro1Lbl').html('Gross misdemeanor: <span class="count" id="groCnt">0</span> gross misdemeanors');
+    $('#mis1Lbl').html('Misdemeanor: <span class="count" id="misCnt">0</span> misdemeanors');
     
     $('#gro1Lbl').fadeTo( 500, 1.0 );
     $('#mis1Lbl').fadeTo( 500, 1.0 );
@@ -504,7 +504,7 @@ function Step2(){
 
 function Step3(){
     
-    $('#fel1Lbl').html('<span class="count" id="felCnt">0</span> <span class="count">Felonies</span>');    
+    $('#fel1Lbl').html('<span class="count" id="felCnt">0</span> <span class="count">felonies</span>');    
     $('#fel2Lbl').html('Of those, <span class="count" id="fel2Cnt">0</span> remained felonies');
     $('#gro2Lbl').html('<span class="count" id="mis2Cnt">0</span> reduced to gross misdemeanors');
     $('#mis2Lbl').html('<span class="count" id="gro2Cnt">0</span> reduced to misdemeanors');    
