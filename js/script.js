@@ -372,9 +372,9 @@ function Step2(){
     $('.counters').css('display','inherit');
     $("rect").not("#graph rect").remove();
     
-    $('#fel1Lbl').html('Felony: <span class="count" id="felCnt">0</span> <span class="count fltright">Charges</span>');
-    $('#gro1Lbl').html('Gross misdemeanor: <span class="count" id="groCnt">0</span> Charges');
-    $('#mis1Lbl').html('Misdemeanor: <span class="count" id="misCnt">0</span> Charges');
+    $('#fel1Lbl').html('Felony: <span class="count" id="felCnt">0</span> <span class="count fltright">Cases</span>');
+    $('#gro1Lbl').html('Gross misdemeanor: <span class="count" id="groCnt">0</span> Cases');
+    $('#mis1Lbl').html('Misdemeanor: <span class="count" id="misCnt">0</span> Cases');
     
     $('#gro1Lbl').fadeTo( 500, 1.0 );
     $('#mis1Lbl').fadeTo( 500, 1.0 );
