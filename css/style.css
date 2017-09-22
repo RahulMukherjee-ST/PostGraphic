@@ -70,6 +70,7 @@
 .clicker    {
     opacity: 0;
     z-index: 20;
+    margin-top: -20px;
 }
 
 .clicker:hover {
