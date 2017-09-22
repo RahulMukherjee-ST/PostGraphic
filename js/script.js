@@ -665,7 +665,7 @@ function Step6(){
     $('#disLbl').html('<span class="count" id="disCnt">0</span> received no discipline');
     
     countUpAlt('#expCnt',21);
-    countUpAlt('#revCnt',111);
+    countUpAlt('#revCnt',112);
     countUpAlt('#susCnt',24);
     countUpAlt('#disCnt',493);
     
