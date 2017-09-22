@@ -48,7 +48,7 @@
 
 #misArrows  {
     width: 450px;
-    top: 413px;
+    top: 385px;
     left: 249px;
     height: 218px;
     display: none;
@@ -136,6 +136,12 @@ i.active {
     padding: 0px 4px;
 }
 
+.intoLede   {
+    width: 50% !important;
+    margin-left: 25% !important;
+    margin-bottom: 15px !important;
+}
+
 .red {
     fill: #c1262d;
 }
@@ -158,8 +164,8 @@ i.active {
 }
 
 #intro, #intro > svg    {
-    height: 140px;
-    margin-left:  30.3%;
+    height: 170px;
+    margin-left:  19%;
 }
 
 .introTitle {

@@ -4,9 +4,11 @@ var width,
     height,
     widthSquares = 45,
     heightSquares = 33,
+    altheight = 45,
     squareSize = 6,
+    altsquaresize = 10,
     gap = 1;
-    var mobileX = 240;
+    var altX = 450;
     var deskX = 198;
 
     var k = 0;
@@ -42,8 +44,8 @@ d3.csv("postdata3.csv", function(d) {
 },
 function(error, rows) {
      var data = rows;
-      height = (squareSize*heightSquares) + widthSquares*gap + 25;
-  width = (squareSize*widthSquares) + heightSquares*gap + 25;
+      height = (altsquaresize*altheight) + widthSquares*gap + 25;
+  width = (altsquaresize*widthSquares) + altheight*gap + 25;
 
     var waffle = d3.select('#intro')
       .append("svg")
@@ -55,18 +57,18 @@ function(error, rows) {
       .data(data)
       .enter()
       .append("rect")
-      .attr("width", squareSize)
-      .attr("height", squareSize)
+      .attr("width", altsquaresize)
+      .attr("height", altsquaresize)
       .attr("fill","gray")
       .attr("x", function(d, i){
-        row = i%heightSquares;
-        var numb = (((row*squareSize) + (row*gap)) + (heightSquares*squareSize)) - deskX;
+        row = i%altheight;
+        var numb = (((row*altsquaresize) + (row*gap)) + (altheight*altsquaresize)) - altX;
         return numb;          
         })
       .attr("y", function(d, i){
           //group n squares for column
-          col = Math.floor(i/heightSquares);
-          var xnumb = (col*squareSize) + (col*gap);
+          col = Math.floor(i/altheight);
+          var xnumb = (col*altsquaresize) + (col*gap);
 //          console.log (xnumb);
           return xnumb;
       }).style('display','none');
@@ -82,14 +84,14 @@ function(error, rows) {
                 {
                     $(this).css('opacity','1');
                     $(this).attr("x", function(d, i){
-        row = e%heightSquares;
-        var numb = (((row*squareSize) + (row*gap)) + (heightSquares*squareSize)) - deskX;
+        row = e%altheight;
+        var numb = (((row*altsquaresize) + (row*gap)) + (altheight*altsquaresize)) - altX;
         return numb;          
         });
                     $(this).attr("y", function(d, i){
           //group n squares for column
-          col = Math.floor(e/heightSquares);
-          var xnumb = (col*squareSize) + (col*gap);
+          col = Math.floor(e/altheight);
+          var xnumb = (col*altsquaresize) + (col*gap);
 //          console.log (xnumb);
           return xnumb;
       });
@@ -99,14 +101,14 @@ function(error, rows) {
                 else    {
                     $(this).css('opacity','0.2');
                     $(this).attr("x", function(d, i){
-        row = NoDisNum%heightSquares;
-        var numb = (((row*squareSize) + (row*gap)) + (heightSquares*squareSize)) - deskX;
+        row = NoDisNum%altheight;
+        var numb = (((row*altsquaresize) + (row*gap)) + (altheight*altsquaresize)) - altX;
         return numb;          
         });
                     $(this).attr("y", function(d, i){
           //group n squares for column
-          col = Math.floor(NoDisNum/heightSquares);
-          var xnumb = (col*squareSize) + (col*gap);
+          col = Math.floor(NoDisNum/altheight);
+          var xnumb = (col*altsquaresize) + (col*gap);
 //          console.log (xnumb);
           return xnumb;
       }); 
@@ -297,6 +299,10 @@ $("body").keydown(function(e) {
 });
 
 function Step1(){
+    
+    $('rect').attr("width", altsquaresize);
+    $('rect').attr("height", altsquaresize);
+    
     var mods = document.getElementById('graph').childNodes;
         var NoDisNum = 494; //493 or 473 with old spreadsheet
     
@@ -308,14 +314,14 @@ function Step1(){
                 {
                     $(this).css('opacity','1');
                     $(this).attr("x", function(d, i){
-        row = e%heightSquares;
-        var numb = (((row*squareSize) + (row*gap)) + (heightSquares*squareSize)) - deskX;
+        row = e%altheight;
+        var numb = (((row*altsquaresize) + (row*gap)) + (altheight*altsquaresize)) - altX;
         return numb;          
         });
                     $(this).attr("y", function(d, i){
           //group n squares for column
-          col = Math.floor(e/heightSquares);
-          var xnumb = (col*squareSize) + (col*gap);
+          col = Math.floor(e/altheight);
+          var xnumb = (col*altsquaresize) + (col*gap);
 //          console.log (xnumb);
           return xnumb;
       });
@@ -325,14 +331,14 @@ function Step1(){
                 else    {
                     $(this).css('opacity','0.2');
                     $(this).attr("x", function(d, i){
-        row = NoDisNum%heightSquares;
-        var numb = (((row*squareSize) + (row*gap)) + (heightSquares*squareSize)) - deskX;
+        row = NoDisNum%altheight;
+        var numb = (((row*altsquaresize) + (row*gap)) + (altheight*altsquaresize)) - altX;
         return numb;          
         });
                     $(this).attr("y", function(d, i){
           //group n squares for column
-          col = Math.floor(NoDisNum/heightSquares);
-          var xnumb = (col*squareSize) + (col*gap);
+          col = Math.floor(NoDisNum/altheight);
+          var xnumb = (col*altsquaresize) + (col*gap);
 //          console.log (xnumb);
           return xnumb;
       }); 
@@ -361,6 +367,8 @@ function Step1(){
 function Step2(){  
     $('rect').removeClass('grayFill');    
     $('rect').css('opacity','1.0');
+    $('rect').attr("width", squareSize);
+    $('rect').attr("height", squareSize);
     $('.counters').css('display','inherit');
     $("rect").not("#graph rect").remove();
     
