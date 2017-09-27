@@ -24,7 +24,7 @@ var width,
     var s = 0;
     var t = 0;
 
-d3.csv("postdata3.csv", function(d) {
+d3.csv("postdata3.csv?2", function(d) {
  return {
     id: d.Current_Case_Number,
     pNum: d.POSTnumber,

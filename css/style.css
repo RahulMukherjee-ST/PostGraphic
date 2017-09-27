@@ -160,12 +160,13 @@ i.active {
 }
 
 #introButton    {
-    margin-top: 105px;
+    margin-top: 60px;
 }
 
 #intro, #intro > svg    {
     height: 270px;
     margin-left:  7%;
+    padding-top: 10px;
 }
 
 .introTitle {
