@@ -75,7 +75,7 @@ function(error, rows) {
     
         var mods = document.getElementById('graph').childNodes;
     
-        var NoDisNum = 494; //473 for old
+        var NoDisNum = 493; //473 for old
     
         var e = 0;
         $(mods).each(function(i){
@@ -578,7 +578,7 @@ function Step4(){
     
     $("rect.gro").not("#graph rect").not("#graph3 rect").remove();
     
-    DrawEm("GROSS MISDEMEANOR",67,17,25,24,78,2,5);
+    DrawEm("GROSS MISDEMEANOR",67,17,25,24,79,2,5);
     $("rect.gro").each(function(i){
         $(this).delay(i).fadeTo( 500, 1.0 );
     });
@@ -619,7 +619,7 @@ function Step5(){
     
     $("rect.mis").not("#graph rect").not("#graph4 rect").remove();    
     
-    DrawEm("MISDEMEANOR",67,115,119,171,95,22,13);
+    DrawEm("MISDEMEANOR",67,115,119,171,96,22,13);
     $('.fel').removeClass('mis');
     $('.gro').removeClass('mis');
         $("rect.mis").each(function(i){
