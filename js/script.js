@@ -304,7 +304,7 @@ function Step1(){
     $('rect').attr("height", altsquaresize);
     
     var mods = document.getElementById('graph').childNodes;
-        var NoDisNum = 494; //493 or 473 with old spreadsheet
+        var NoDisNum = 493; //493 or 473 with old spreadsheet
     
         var e = 0;
         $(mods).each(function(i){
