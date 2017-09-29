@@ -73,7 +73,7 @@
     margin-top: -20px;
 }
 
-.clicker:hover {
+.material-icons:hover {
     cursor: pointer;
 }
 
@@ -125,6 +125,7 @@ i.active {
 
 .intoLede   {
     line-height: 18px;
+    margin-left: 13%;
 }
 
 .buttonContent, .clicker  {
