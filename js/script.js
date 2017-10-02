@@ -24,8 +24,8 @@ var width,
     var s = 0;
     var t = 0;
 $(window).scroll(function() {
-   var hT = $('.projectGraphic').offset().top,
-       hH = $('.projectGraphic').outerHeight(),
+   var hT = $('#slide1').offset().top,
+       hH = $('#slide1').outerHeight(),
        wH = $(window).height(),
        wS = $(this).scrollTop();
     console.log((hT-wH) , wS);
