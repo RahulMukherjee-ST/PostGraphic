@@ -23,13 +23,7 @@ var width,
     var r = 0;
     var s = 0;
     var t = 0;
-$(window).scroll(function() {
-   var hT = $('#slide1').offset().top,
-       hH = $('#slide1').outerHeight(),
-       wH = $(window).height(),
-       wS = $(this).scrollTop();
-    console.log((hT-wH) , wS);
-   if (wS > (hT+hH-wH)){
+
 d3.csv("postdata3.csv?2", function(d) {
  return {
     id: d.Current_Case_Number,
@@ -140,8 +134,7 @@ function(error, rows) {
     d3.select('#exp').append("svg").attr("width", 'inherit').attr("height", 'inherit').append("g").attr("id","graph5b").selectAll("div");        
 
 });
-   }
-});
+
 function countUpAlt(id,number){
     $(id).each(function() {
   var $this = $(this),
